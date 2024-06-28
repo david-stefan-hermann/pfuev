@@ -1,9 +1,8 @@
-import type { Metadata } from "next"
-import { Roboto_Flex } from "next/font/google"
 import "./globals.css"
+import type { Metadata } from "next"
 import { Navbar } from "@/components"
-
-const roboto = Roboto_Flex({ subsets: ["latin"] })
+import { Providers } from './providers'
+import { fonts } from './fonts'
 
 export const metadata: Metadata = {
   title: "PFÜF",
@@ -18,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Navbar />
-      <body className={roboto.className}>{children}</body>
+      <body className={fonts.roboto.variable}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }
