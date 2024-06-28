@@ -9,6 +9,7 @@ import {
     Stack,
     Collapse,
     Icon,
+    Image,
     Popover,
     PopoverTrigger,
     PopoverContent,
@@ -50,12 +51,12 @@ const Navbar = () => {
                     />
                 </Flex>
                 <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-                    <Text
-                        textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-                        fontFamily={'heading'}
-                        color={useColorModeValue('gray.800', 'white')}>
-                        Logo
-                    </Text>
+                    <Image
+                        src="/logo.png"
+                        alt="Logo"
+                        width={70}
+                        height={70}
+                    />
 
                     <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
                         <DesktopNav />
@@ -110,14 +111,20 @@ const DesktopNav = () => {
                                 as="a"
                                 p={2}
                                 href={navItem.href ?? '#'}
-                                fontSize={'sm'}
+                                fontSize={'md'}
                                 fontWeight={500}
                                 color={linkColor}
                                 _hover={{
                                     textDecoration: 'none',
                                     color: linkHoverColor,
-                                }}>
+                                }}
+                                display="flex" // Set display to flex to use flexbox properties
+                                alignItems="center" // Align items vertically in the center
+                                justifyContent="center" // Center content horizontally (optional, if you want it perfectly centered)
+                                height="100%" // Ensure the Box has a height property to allow for vertical centering
+                            >
                                 {navItem.label}
+
                             </Box>
                         </PopoverTrigger>
 
@@ -245,41 +252,40 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
     {
-        label: 'Inspiration',
+        label: 'Über uns',
+        href: '#pfuev',
+    },
+    {
+        label: 'Dienstleistungen',
+        href: '/#dienstleistungen',
         children: [
             {
-                label: 'Explore Design Work',
-                subLabel: 'Trending Design to inspire you',
-                href: '#',
+                label: 'Gesundheitschecks',
+                subLabel: 'Umfassende Gesundheitsprüfungen, um sicherzustellen, dass Ihre Pferde gesund und fit sind.',
+                href: '/dienstleistungen/#Gesundheitschecks',
             },
             {
-                label: 'New & Noteworthy',
-                subLabel: 'Up-and-coming Designers',
-                href: '#',
+                label: 'Leistungsüberprüfungen',
+                subLabel: 'Detaillierte Leistungsanalysen zur Optimierung der Trainingsprogramme',
+                href: '/dienstleistungen/#Leistungsüberprüfungen',
+            },
+            {
+                label: 'Zertifizierungen',
+                subLabel: 'Offizielle Zertifizierungen für Zucht- und Verkaufszwecke.',
+                href: '/dienstleistungen/#Zertifizierungen',
             },
         ],
     },
     {
-        label: 'Find Work',
-        children: [
-            {
-                label: 'Job Board',
-                subLabel: 'Find your dream design job',
-                href: '#',
-            },
-            {
-                label: 'Freelance Projects',
-                subLabel: 'An exclusive list for contract work',
-                href: '#',
-            },
-        ],
+        label: 'Unsere Partner',
+        href: '#partner',
     },
     {
-        label: 'Learn Design',
-        href: '#',
+        label: 'Pferde-Galerie',
+        href: '#pferde',
     },
     {
-        label: 'Hire Designers',
-        href: '#',
+        label: 'Kontakt',
+        href: '#kontakt',
     },
 ]
