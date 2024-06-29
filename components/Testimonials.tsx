@@ -12,18 +12,19 @@ import {
     useColorModeValue,
     Link,
 } from '@chakra-ui/react'
+import { Interface } from 'readline'
 
 interface Props {
     children: React.ReactNode
 }
 
-const Testimonial = (props: Props) => {
+const Testimonial: React.FC<Props> = (props) => {
     const { children } = props
 
     return <Box>{children}</Box>
 }
 
-const TestimonialContent = (props: Props) => {
+const TestimonialContent: React.FC<Props> = (props) => {
     const { children } = props
 
     return (
@@ -55,7 +56,7 @@ const TestimonialContent = (props: Props) => {
     )
 }
 
-const TestimonialHeading = (props: Props) => {
+const TestimonialHeading: React.FC<Props> = (props) => {
     const { children } = props
 
     return (
@@ -65,7 +66,7 @@ const TestimonialHeading = (props: Props) => {
     )
 }
 
-const TestimonialText = (props: Props) => {
+const TestimonialText: React.FC<Props> = (props) => {
     const { children } = props
 
     return (
@@ -78,31 +79,29 @@ const TestimonialText = (props: Props) => {
     )
 }
 
-const TestimonialAvatar = ({
-    src,
-    link,
-    name,
-    title,
-}: {
+interface TestimonialAvatarProps {
     src: string
     link: string
     name: string
     title: string
-}) => {
-    return (
-        <Flex align={'center'} mt={8} direction={'column'}>
-            <Avatar size="lg" src={src} mb={2} />
-            <Stack spacing={-1} align={'center'}>
-                <Link fontWeight={600} href={link} isExternal>{name}<ExternalLinkIcon ml={1} mb={1} /></Link>
-                <Text fontSize={'sm'} color={useColorModeValue('gray.600', 'gray.400')}>
-                    {title}
-                </Text>
-            </Stack>
-        </Flex>
-    )
 }
 
-export default function WithSpeechBubbles() {
+
+const TestimonialAvatar: React.FC<TestimonialAvatarProps> = ({src, link, name, title}) => {
+        return (
+            <Flex align={'center'} mt={8} direction={'column'}>
+                <Avatar size="lg" src={src} mb={2} />
+                <Stack spacing={-1} align={'center'}>
+                    <Link fontWeight={600} href={link} isExternal>{name}<ExternalLinkIcon ml={1} mb={1} /></Link>
+                    <Text fontSize={'sm'} color={useColorModeValue('gray.600', 'gray.400')}>
+                        {title}
+                    </Text>
+                </Stack>
+            </Flex>
+        )
+    }
+
+const Testimonials: React.FC = () => {
     return (
         <Box bg={useColorModeValue('gray.100', 'gray.700')}>
             <Container maxW={'7xl'} py={16} as={Stack} spacing={12}>
@@ -165,3 +164,5 @@ export default function WithSpeechBubbles() {
         </Box>
     )
 }
+
+export default Testimonials

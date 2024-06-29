@@ -2,6 +2,8 @@
 
 import { ChakraProvider } from '@chakra-ui/react'
 
-export function Providers({ children }: { children: React.ReactNode }) {
+const Providers: React.FC<{children: React.ReactNode}> = ({ children }) => {
     return <ChakraProvider>{children}</ChakraProvider>
 }
+
+export { Providers }

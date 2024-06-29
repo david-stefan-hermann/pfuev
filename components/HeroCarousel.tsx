@@ -35,7 +35,7 @@ const settings = {
     slidesToScroll: 1,
 }
 
-const HeroCarousel = () => {
+const HeroCarousel: React.FC = () => {
     // As we have used custom buttons, we need a reference variable to
     // change the state
     const [slider, setSlider] = React.useState<Slider | null>(null)
@@ -132,13 +132,13 @@ const HeroCarousel = () => {
 
 export default HeroCarousel
 
-const Buttons = ({ cardLink }: CardLink) => {
+const Buttons: React.FC<CardLink> = ({ cardLink }) => {
     return (
         <>
-            <Button colorScheme="blue" variant="solid" size="lg" as="a" href="/#pfuev">
+            <Button rounded={'full'} colorScheme="blue" variant="solid" size="lg" as="a" href="/#pfuev">
                 Über uns
             </Button>
-            <Button colorScheme="blue" variant="solid" size="lg" as="a" href={cardLink}>
+            <Button rounded={'full'} variant="solid" size="lg" as="a" href={cardLink}>
                 weiterlesen
             </Button>
         </>
@@ -164,7 +164,7 @@ interface CarouselCard {
     card: CarouselCardContent
 }
 
-const MobileHeroCarousel = ({ index, card }: CarouselCard) => {
+const MobileHeroCarousel: React.FC<CarouselCard> = ({ index, card }) => {
     return (
         <>
             <Box
@@ -212,7 +212,7 @@ const MobileHeroCarousel = ({ index, card }: CarouselCard) => {
     )
 }
 
-const DesktopHeroCarousel = ({ index, card }: CarouselCard) => {
+const DesktopHeroCarousel: React.FC<CarouselCard> = ({ index, card }) => {
     return (
         <Box
             key={index}

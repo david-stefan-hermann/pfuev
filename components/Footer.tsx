@@ -1,4 +1,4 @@
-const Footer = () => {
+const Footer: React.FC = () => {
     return (
         <footer>
             <p>© 2021 My Company</p>

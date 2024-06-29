@@ -22,7 +22,7 @@ interface StatsCardProps {
     icon?: React.ReactNode
 }
 
-const StatsCard = (props: StatsCardProps) => {
+const StatsCard: React.FC<StatsCardProps> = (props) => {
     const { title, stat, icon } = props
     return (
         <Stat
@@ -51,7 +51,7 @@ const StatsCard = (props: StatsCardProps) => {
         </Stat>
     )
 }
-const BasicStatistics = () => {
+const BasicStatistics: React.FC = () => {
     return (
         <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
             <chakra.h1 textAlign={'center'} fontSize={'4xl'} py={10} fontWeight={'bold'}>

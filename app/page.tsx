@@ -1,6 +1,6 @@
 import { HeroCarousel, HeaderSizedBox, Statistics, Testimonials, Hero } from "@/components"
 
-export default function Home() {
+const Home: React.FC = () => {
   return (
     <main className="">
       <HeaderSizedBox id="" />
@@ -14,3 +14,5 @@ export default function Home() {
     </main>
   )
 }
+
+export default Home

@@ -3,17 +3,14 @@ import type { Metadata } from "next"
 import { Navbar } from "@/components"
 import { Providers } from './providers'
 import { fonts } from './fonts'
+import React from "react"
 
 export const metadata: Metadata = {
   title: "PFÜF",
   description: "Pferdischer Überprüfungsverband",
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+const RootLayout: React.FC<Readonly<{ children: React.ReactNode }>> = ({ children }) => {
   return (
     <html lang="en">
       <body className={fonts.roboto.variable}>
@@ -25,3 +22,5 @@ export default function RootLayout({
     </html>
   )
 }
+
+export default RootLayout

@@ -24,7 +24,7 @@ import {
     ChevronRightIcon,
 } from '@chakra-ui/icons'
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
     const { isOpen, onToggle } = useDisclosure()
 
     return (
@@ -96,7 +96,7 @@ const Navbar = () => {
 
 export default Navbar
 
-const DesktopNav = () => {
+const DesktopNav: React.FC = () => {
     const linkColor = useColorModeValue('gray.600', 'gray.200')
     const linkHoverColor = useColorModeValue('gray.800', 'white')
     const popoverContentBgColor = useColorModeValue('white', 'gray.800')
@@ -150,7 +150,7 @@ const DesktopNav = () => {
     )
 }
 
-const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
+const DesktopSubNav: React.FC<NavItem> = ({ label, href, subLabel }) => {
     return (
         <Box
             as="a"
@@ -185,7 +185,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
     )
 }
 
-const MobileNav = () => {
+const MobileNav: React.FC = () => {
     return (
         <Stack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
             {NAV_ITEMS.map((navItem) => (
@@ -195,7 +195,7 @@ const MobileNav = () => {
     )
 }
 
-const MobileNavItem = ({ label, children, href }: NavItem) => {
+const MobileNavItem: React.FC<NavItem> = ({ label, children, href }) => {
     const { isOpen, onToggle } = useDisclosure()
 
     return (
