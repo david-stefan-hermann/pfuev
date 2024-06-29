@@ -28,7 +28,7 @@ const Navbar = () => {
     const { isOpen, onToggle } = useDisclosure()
 
     return (
-        <Box>
+        <Box position="fixed" w="full" zIndex="overlay" id="header">
             <Flex
                 bg={useColorModeValue('white', 'gray.800')}
                 color={useColorModeValue('gray.600', 'white')}
