@@ -4,6 +4,7 @@ import {
     Box,
     chakra,
     Flex,
+    Heading,
     SimpleGrid,
     Stat,
     StatLabel,
@@ -54,9 +55,9 @@ const StatsCard: React.FC<StatsCardProps> = (props) => {
 const BasicStatistics: React.FC = () => {
     return (
         <Box maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
-            <chakra.h1 textAlign={'center'} fontSize={'4xl'} py={10} fontWeight={'bold'}>
+            <Heading textAlign={'center'} py={10} fontWeight={'bold'}>
                 Die NR. 1 der DACH Region!
-            </chakra.h1>
+            </Heading>
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
                 <StatsCard title={'Wir prüfen pro Jahr'} stat={'50.000 Pferde'} icon={<PiHorseLight size={'3em'} />} />
                 <StatsCard title={'Arbeiten in'} stat={'3 verschiedenen Ländern'} icon={<PiGlobeHemisphereWestLight size={'3em'} />} />
