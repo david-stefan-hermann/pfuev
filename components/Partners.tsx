@@ -1,0 +1,131 @@
+'use client'
+
+import {
+    Box,
+    Container,
+    Flex,
+    Heading,
+    Image,
+    Link,
+    Stack,
+    Text,
+    useColorModeValue,
+} from '@chakra-ui/react'
+import {
+    PiHorseLight,
+} from "react-icons/pi"
+
+interface CardProps {
+    heading: string
+    description: string
+    icon: string
+    href: string
+}
+
+const Card: React.FC<CardProps> = ({ heading, description, icon, href }) => {
+    return (
+        <Box
+            maxW={{ base: 'full', md: '275px' }}
+            w={'full'}
+            borderWidth="1px"
+            borderRadius="lg"
+            overflow="hidden"
+            p={5}>
+            <Stack align={'start'} spacing={2}>
+                <Flex
+                    w={28}
+                    h={28}
+                    align={'center'}
+                    justify={'center'}
+                    color={'white'}
+                    rounded={'full'}
+                    bg={useColorModeValue('gray.100', 'gray.700')}>
+                    <Image
+                        src={icon}
+                        fallback={ <PiHorseLight color='black' size={"80%"}/> }
+                    />
+                </Flex>
+                <Box mt={2}>
+                    <Heading size="md">{heading}</Heading>
+                    <Text mt={1} fontSize={'sm'}>
+                        {description}
+                    </Text>
+                </Box>
+                <Link href={href} color={'blue.500'} size={'sm'} isExternal>
+                    Weiterlesen
+                </Link>
+            </Stack>
+        </Box>
+    )
+}
+
+const Partners: React.FC = () => {
+    return (
+        <Box p={4}>
+            <Stack spacing={12} py={16}>
+                <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
+                    <Heading>
+                        Unsere Partner
+                    </Heading>
+                    <Text color={'gray.600'} fontSize={{ base: 'sm', sm: 'lg' }}>
+                        Unsere Partnerorganisationen des PFÜV spielen eine entscheidende Rolle bei der Sicherstellung höchster
+                        Standards in der Pferdegesundheit und -leistung. Jede regionale Organisation bringt ihre spezielle
+                        Expertise ein und trägt zur kontinuierlichen Verbesserung und Weiterentwicklung unserer
+                        Dienstleistungen bei. Gemeinsam mit unseren Partnern setzen wir Maßstäbe in der Pferdeinspektion und
+                        bieten ein umfassendes Netzwerk an Unterstützung und Innovation.
+                    </Text>
+                </Stack>
+                <Container maxW={'5xl'}>
+                    <Flex flexWrap="wrap" gridGap={6} justify="center">
+                        {
+                            partners_data.map((partner, index) => (
+                                <Card
+                                    key={index}
+                                    heading={partner.heading}
+                                    icon={partner.logo}
+                                    description={partner.description}
+                                    href={partner.href}
+                                />
+                            ))
+                        }
+                    </Flex>
+                </Container>
+            </Stack>
+        </Box>
+    )
+}
+
+export default Partners
+
+const partners_data = [
+    {
+        heading: 'PFÜV Nord',
+        description: 'Die führende Organisation für Pferdegesundheit und -inspektion im Norden. PFÜV Nord setzt Maßstäbe in der Gesundheitsprüfung und Leistungsanalyse.',
+        logo: '/partners/nord.png',
+        href: '#',
+    },
+    {
+        heading: 'PFÜV Süd',
+        description: 'PFÜV Süd bietet umfassende Zertifizierungs- und Überprüfungsdienste für Pferde in der südlichen Region, spezialisiert auf nachhaltige Methoden.',
+        logo: '/partners/sued.png',
+        href: '#',
+    },
+    {
+        heading: 'PFÜV Pferdland',
+        description: 'Lokale Reichweite und Standards zeichnen PFÜV Pferdland aus, der vertrauenswürdige Partner für Pferdeinspektion im Rheinland.',
+        logo: '/partners/pferdl.png',
+        href: '#',
+    },
+    {
+        heading: 'PFÜV Austria',
+        description: 'Als zuverlässiger Partner für Pferdebesitzer und Züchter in Österreich steht PFÜV Austria für höchste Qualität in der Pferdeinspektion und Zertifizierung',
+        logo: '/partners/aust.png',
+        href: '#',
+    },
+    {
+        heading: 'PFÜV Schweiz',
+        description: 'PFÜV Schweiz AG kombiniert modernste Technologien und erfahrene Experten, um die Gesundheit und Leistung von Pferden in der Schweiz zu gewährleisten.',
+        logo: '/partners/swiss.png',
+        href: '#',
+    },
+]
