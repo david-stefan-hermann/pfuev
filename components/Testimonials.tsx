@@ -1,5 +1,6 @@
 'use client'
 
+import { ExternalLinkIcon } from '@chakra-ui/icons'
 import {
     Box,
     Flex,
@@ -9,6 +10,7 @@ import {
     Container,
     Avatar,
     useColorModeValue,
+    Link,
 } from '@chakra-ui/react'
 
 interface Props {
@@ -78,18 +80,20 @@ const TestimonialText = (props: Props) => {
 
 const TestimonialAvatar = ({
     src,
+    link,
     name,
     title,
 }: {
     src: string
+    link: string
     name: string
     title: string
 }) => {
     return (
         <Flex align={'center'} mt={8} direction={'column'}>
-            <Avatar src={src} mb={2} />
+            <Avatar size="lg" src={src} mb={2} />
             <Stack spacing={-1} align={'center'}>
-                <Text fontWeight={600}>{name}</Text>
+                <Link fontWeight={600} href={link} isExternal>{name}<ExternalLinkIcon ml={1} mb={1} /></Link>
                 <Text fontSize={'sm'} color={useColorModeValue('gray.600', 'gray.400')}>
                     {title}
                 </Text>
@@ -117,10 +121,11 @@ export default function WithSpeechBubbles() {
                         </TestimonialContent>
                         <TestimonialAvatar
                             src={
-                                'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
+                                '/testimonials/1.jpg'
                             }
+                            link={'https://www.pexels.com/de-de/foto/mann-der-cowboyhut-tragt-2250519/'}
                             name={'Thomas Becker'}
-                            title={'Pferdetrainer'}
+                            title={'Pferdetrainer und Cowboy'}
                         />
                     </Testimonial>
                     <Testimonial>
@@ -132,8 +137,9 @@ export default function WithSpeechBubbles() {
                         </TestimonialContent>
                         <TestimonialAvatar
                             src={
-                                'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
+                                '/testimonials/2.jpg'
                             }
+                            link={'https://www.pexels.com/de-de/foto/vorbereitung-festhalten-halten-pferd-7882376/'}
                             name={'Anna Müller'}
                             title={'Pferdebesitzerin und Züchterin'}
                         />
@@ -147,8 +153,9 @@ export default function WithSpeechBubbles() {
                         </TestimonialContent>
                         <TestimonialAvatar
                             src={
-                                'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
+                                '/testimonials/3.jpg'
                             }
+                            link={'https://www.pexels.com/de-de/foto/schnee-natur-frau-romantisch-7787638/'}
                             name={'Maria Schneider'}
                             title={'Reitstallbesitzerin'}
                         />
