@@ -134,6 +134,24 @@ const HeroCarousel = () => {
 
 export default HeroCarousel
 
+const Buttons = ({ cardLink }: CardLink) => {
+    return (
+        <>
+            <Button colorScheme="blue" variant="solid" size="lg" as="a" href="/#pfuev">
+                Über uns
+            </Button>
+            <Button colorScheme="blue" variant="solid" size="lg" as="a" href={cardLink}>
+                weiterlesen
+            </Button>
+        </>
+    )
+}
+
+interface CardLink {
+    cardLink: string
+}
+
+
 interface CarouselCardContent {
     title: string
     text: string
@@ -189,9 +207,7 @@ const MobileHeroCarousel = ({ index, card }: CarouselCard) => {
                     </Text>
                 </Wrap>
                 <Center>
-                    <Button colorScheme="blue" size="lg" as="a" href={card.link}>
-                        weiterlesen
-                    </Button>
+                    <Buttons cardLink={card.link} />
                 </Center>
             </Container>
         </>
@@ -238,9 +254,7 @@ const DesktopHeroCarousel = ({ index, card }: CarouselCard) => {
                         {card.text}
                     </Text>
                     <Wrap>
-                        <Button colorScheme="blue" size="lg" as="a" href={card.link}>
-                            weiterlesen
-                        </Button>
+                        <Buttons cardLink={card.link} />
                     </Wrap>
                 </Stack>
             </Container>
