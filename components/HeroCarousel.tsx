@@ -17,12 +17,10 @@ import {
 } from '@chakra-ui/react'
 // Here we have used react-icons package for the icons
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi'
+import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md";
 // And react-slick as our Carousel Lib
 import Slider from 'react-slick'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
-import HeaderSizedBox from './HeaderSizedBox'
-import { link } from 'fs'
-
 
 // Settings for the slider
 const settings = {
@@ -99,7 +97,7 @@ const HeroCarousel = () => {
                 transform={'translate(0%, -50%)'}
                 zIndex={2}
                 onClick={() => slider?.slickPrev()}>
-                <BiLeftArrowAlt size="40px" />
+                <MdOutlineKeyboardArrowLeft size="40px" />
             </IconButton>
             {/* Right Icon */}
             <IconButton
@@ -111,7 +109,7 @@ const HeroCarousel = () => {
                 transform={'translate(0%, -50%)'}
                 zIndex={2}
                 onClick={() => slider?.slickNext()}>
-                <BiRightArrowAlt size="40px" />
+                <MdOutlineKeyboardArrowRight size="40px" />
             </IconButton>
             {/* Slider */}
             <Flex display={{ base: 'none', md: 'block' }}>
@@ -187,7 +185,7 @@ const MobileHeroCarousel = ({ index, card }: CarouselCard) => {
                     bg="blackAlpha.500" // Example: black with 50% opacity
                     zIndex="overlay" // Ensure it's above the background image but below content
                 ></Box>
-                <Link position="absolute" color="Cyan" zIndex="overlay" ml={4} bottom={2} href={card.attribution} isExternal>
+                <Link position="absolute" color="blue.200" zIndex="overlay" ml={4} bottom={2} href={card.attribution} isExternal>
                     Foto von: {card.author} <ExternalLinkIcon mx="2px" />
                 </Link>
             </Box>
@@ -206,7 +204,7 @@ const MobileHeroCarousel = ({ index, card }: CarouselCard) => {
                         {card.text}
                     </Text>
                 </Wrap>
-                <Center>
+                <Center gap="2">
                     <Buttons cardLink={card.link} />
                 </Center>
             </Container>
@@ -234,7 +232,7 @@ const DesktopHeroCarousel = ({ index, card }: CarouselCard) => {
                 bg="blackAlpha.500" // Example: black with 50% opacity
                 zIndex="overlay" // Ensure it's above the background image but below content
             ></Box>
-            <Link position="relative" color="Cyan" zIndex="overlay" ml={4} top={2} href={card.attribution} isExternal>
+            <Link position="relative" color="blue.200" zIndex="overlay" ml={4} top={2} href={card.attribution} isExternal>
                 Foto von: {card.author} <ExternalLinkIcon mx="2px" />
             </Link>
             {/* This is the block you need to change, to customize the caption */}
