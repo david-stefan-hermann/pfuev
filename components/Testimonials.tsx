@@ -11,6 +11,7 @@ import {
     Avatar,
     useColorModeValue,
     Link,
+    Center,
 } from '@chakra-ui/react'
 import { Interface } from 'readline'
 
@@ -87,27 +88,27 @@ interface TestimonialAvatarProps {
 }
 
 
-const TestimonialAvatar: React.FC<TestimonialAvatarProps> = ({src, link, name, title}) => {
-        return (
-            <Flex align={'center'} mt={8} direction={'column'}>
-                <Avatar size="lg" src={src} mb={2} />
-                <Stack spacing={-1} align={'center'}>
-                    <Link fontWeight={600} href={link} isExternal>{name}<ExternalLinkIcon ml={1} mb={1} /></Link>
-                    <Text fontSize={'sm'} color={useColorModeValue('gray.600', 'gray.400')}>
-                        {title}
-                    </Text>
-                </Stack>
-            </Flex>
-        )
-    }
+const TestimonialAvatar: React.FC<TestimonialAvatarProps> = ({ src, link, name, title }) => {
+    return (
+        <Flex align={'center'} mt={8} direction={'column'}>
+            <Avatar size="lg" src={src} mb={2} />
+            <Stack spacing={-1} align={'center'}>
+                <Link fontWeight={600} href={link} isExternal>{name}<ExternalLinkIcon ml={1} mb={1} /></Link>
+                <Text fontSize={'sm'} color={useColorModeValue('gray.600', 'gray.400')}>
+                    {title}
+                </Text>
+            </Stack>
+        </Flex>
+    )
+}
 
 const Testimonials: React.FC = () => {
     return (
         <Box bg={useColorModeValue('gray.100', 'gray.700')}>
             <Container maxW={'7xl'} py={16} as={Stack} spacing={12}>
-                <Stack spacing={0} align={'center'}>
+                <Center w={"full"} textAlign={"center"}>
                     <Heading>Was unsere Kundschaft sagt:</Heading>
-                </Stack>
+                </Center>
                 <Stack
                     direction={{ base: 'column', md: 'row' }}
                     spacing={{ base: 10, md: 4, lg: 10 }}>
