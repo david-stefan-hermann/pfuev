@@ -9,11 +9,20 @@ import {
     Heading,
     Text,
     Container,
+    Flex,
+    Wrap,
+    Button,
+    Center,
+    Link,
 } from '@chakra-ui/react'
 // Here we have used react-icons package for the icons
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi'
 // And react-slick as our Carousel Lib
 import Slider from 'react-slick'
+import { ExternalLinkIcon } from '@chakra-ui/icons'
+import HeaderSizedBox from './HeaderSizedBox'
+import { link } from 'fs'
+
 
 // Settings for the slider
 const settings = {
@@ -42,22 +51,28 @@ const HeroCarousel = () => {
     // This can be static or loaded from a server
     const cards = [
         {
-            title: 'Design Projects 1',
-            text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-            image:
-                'https://images.unsplash.com/photo-1516796181074-bf453fbfa3e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
+            title: 'Wissenschaftliche Expertise',
+            text: "Unsere Experten nutzen neueste wissenschaftliche Erkenntnisse, um die Gesundheit Ihrer Pferde zu verbessern.",
+            image: '/hero/1.jpg',
+            author: 'Johannes Plenio',
+            attribution: 'https://www.pexels.com/de-de/foto/silhouette-der-person-die-ein-pferd-reitet-1125774/',
+            link: '#'
         },
         {
-            title: 'Design Projects 2',
-            text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-            image:
-                'https://images.unsplash.com/photo-1438183972690-6d4658e3290e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2274&q=80',
+            title: 'Vertrauen und Transparenz',
+            text: "Wir setzen auf klare Kommunikation und transparente Prozesse für Ihr Vertrauen.",
+            image: '/hero/2.jpg',
+            author: "Mali Maeder",
+            attribution: "https://www.pexels.com/de-de/foto/schwarzes-pferd-das-auf-grunem-feld-lauft-das-mit-baumen-umgeben-ist-101667/",
+            link: '#kundenbewertungen'
         },
         {
-            title: 'Design Projects 3',
-            text: "The project board is an exclusive resource for contract work. It's perfect for freelancers, agencies, and moonlighters.",
-            image:
-                'https://images.unsplash.com/photo-1507237998874-b4d52d1dd655?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
+            title: 'Nachhaltigkeit und Verantwortung',
+            text: " Wir fördern umweltfreundliche Methoden und nachhaltige Pferdehaltung.",
+            image: '/hero/3.jpg',
+            author: "Brenda Timmermans",
+            attribution: "https://www.pexels.com/de-de/foto/weisses-pferd-nahe-heuhaufen-wahrend-des-tages-58875/",
+            link: '#'
         },
     ]
 
@@ -99,38 +114,136 @@ const HeroCarousel = () => {
                 <BiRightArrowAlt size="40px" />
             </IconButton>
             {/* Slider */}
-            <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                {cards.map((card, index) => (
-                    <Box
-                        key={index}
-                        height={'6xl'}
-                        position="relative"
-                        backgroundPosition="center"
-                        backgroundRepeat="no-repeat"
-                        backgroundSize="cover"
-                        backgroundImage={`url(${card.image})`}>
-                        {/* This is the block you need to change, to customize the caption */}
-                        <Container size="container.lg" height="600px" position="relative">
-                            <Stack
-                                spacing={6}
-                                w={'full'}
-                                maxW={'lg'}
-                                position="absolute"
-                                top="50%"
-                                transform="translate(0, -50%)">
-                                <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
-                                    {card.title}
-                                </Heading>
-                                <Text fontSize={{ base: 'md', lg: 'lg' }} color="GrayText">
-                                    {card.text}
-                                </Text>
-                            </Stack>
-                        </Container>
-                    </Box>
-                ))}
-            </Slider>
+            <Flex display={{ base: 'none', md: 'block' }}>
+                <Slider {...settings} ref={(slider) => setSlider(slider)}>
+                    {cards.map((card, index) => (
+                        DesktopHeroCarousel({ index, card })
+                    ))}
+                </Slider>
+            </Flex>
+            <Flex display={{ base: 'block', md: 'none' }}>
+                <Slider {...settings} ref={(slider) => setSlider(slider)}>
+                    {cards.map((card, index) => (
+                        MobileHeroCarousel({ index, card })
+                    ))}
+                </Slider>
+            </Flex>
         </Box>
     )
 }
 
 export default HeroCarousel
+
+interface CarouselCardContent {
+    title: string
+    text: string
+    image: string
+    author: string
+    attribution: string
+    link: string
+}
+
+interface CarouselCard {
+    index: number
+    card: CarouselCardContent
+}
+
+const MobileHeroCarousel = ({ index, card }: CarouselCard) => {
+    return (
+        <>
+            <Box
+                key={index}
+                height={'60'}
+                position="relative"
+                backgroundPosition="top"
+                backgroundRepeat="repeat"
+                backgroundSize="cover"
+                backgroundImage={`url(${card.image})`}>
+                {/* Overlay Box with color filter */}
+                <Box
+                    position="absolute"
+                    top={0}
+                    right={0}
+                    bottom={0}
+                    left={0}
+                    bg="blackAlpha.500" // Example: black with 50% opacity
+                    zIndex="overlay" // Ensure it's above the background image but below content
+                ></Box>
+                <Link position="absolute" color="Cyan" zIndex="overlay" ml={4} bottom={2} href={card.attribution} isExternal>
+                    Foto von: {card.author} <ExternalLinkIcon mx="2px" />
+                </Link>
+            </Box>
+            {/* This is the block you need to change, to customize the caption */}
+            <Container size="container.lg" height="600px" position="relative" px={0}>
+                <Wrap
+                    spacing={4}
+                    px={4}
+                    py={4}
+                    textAlign="center"
+                    maxW={'lg'}>
+                    <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }} color="DarkText">
+                        {card.title}
+                    </Heading>
+                    <Text fontSize={{ base: 'md', lg: 'lg' }} color="DarkText">
+                        {card.text}
+                    </Text>
+                </Wrap>
+                <Center>
+                    <Button colorScheme="blue" size="lg" as="a" href={card.link}>
+                        weiterlesen
+                    </Button>
+                </Center>
+            </Container>
+        </>
+    )
+}
+
+const DesktopHeroCarousel = ({ index, card }: CarouselCard) => {
+    return (
+        <Box
+            key={index}
+            height={'6xl'}
+            position="relative"
+            backgroundPosition="top"
+            backgroundRepeat="no-repeat"
+            backgroundSize="contain"
+            backgroundImage={`url(${card.image})`}>
+            {/* Overlay Box with color filter */}
+            <Box
+                position="absolute"
+                top={0}
+                right={0}
+                bottom={0}
+                left={0}
+                bg="blackAlpha.500" // Example: black with 50% opacity
+                zIndex="overlay" // Ensure it's above the background image but below content
+            ></Box>
+            <Link position="relative" color="Cyan" zIndex="overlay" ml={4} top={2} href={card.attribution} isExternal>
+                Foto von: {card.author} <ExternalLinkIcon mx="2px" />
+            </Link>
+            {/* This is the block you need to change, to customize the caption */}
+            <Container size="container.lg" height="600px" position="relative">
+                <Stack
+                    spacing={6}
+                    w={'full'}
+                    maxW={'lg'}
+                    position="absolute"
+                    top="50%"
+                    transform="translate(0, -50%)"
+                    zIndex="overlay">
+                    <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }} color="White">
+                        {card.title}
+                    </Heading>
+                    <Text fontSize={{ base: 'md', lg: 'lg' }} color="White">
+                        {card.text}
+                    </Text>
+                    <Wrap>
+                        <Button colorScheme="blue" size="lg" as="a" href={card.link}>
+                            weiterlesen
+                        </Button>
+                    </Wrap>
+                </Stack>
+            </Container>
+        </Box>
+    )
+}
