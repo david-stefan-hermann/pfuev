@@ -1,11 +1,12 @@
-import { HeroCarousel, HeaderSizedBox, Statistics, Testimonials } from "@/components"
+import { HeroCarousel, HeaderSizedBox, Statistics, Testimonials, Hero } from "@/components"
 
 export default function Home() {
   return (
     <main className="">
       <HeaderSizedBox id="" />
-      <HeaderSizedBox id="pfuev" />
       <HeroCarousel />
+      <HeaderSizedBox id="pfuev" />
+      <Hero />
       <HeaderSizedBox id="kundenbewertungen" />
       <Testimonials />
       <Statistics />

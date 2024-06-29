@@ -4,6 +4,7 @@ import Footer from "./Footer"
 import HeaderSizedBox from "./HeaderSizedBox"
 import Statistics from "./Statistics"
 import Testimonials from "./Testimonials"
+import Hero from "./Hero"
 
 export {
     Navbar,
@@ -12,4 +13,5 @@ export {
     HeaderSizedBox,
     Statistics,
     Testimonials,
+    Hero,
 }
