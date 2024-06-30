@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactElement } from 'react'
-import { Box, SimpleGrid, Icon, Text, Stack, Flex, Container, Heading, Link, Button } from '@chakra-ui/react'
+import { Box, SimpleGrid, Icon, Text, Stack, Flex, Container, Heading, Link, Button, Center } from '@chakra-ui/react'
 import { MdOutlineHealthAndSafety } from "react-icons/md"
 import { CgPerformance } from "react-icons/cg"
 import { GrCertificate } from "react-icons/gr"
@@ -10,26 +10,29 @@ interface FeatureProps {
     title: string
     text: string
     icon: ReactElement
+    link: string
 }
 
-const Feature: React.FC<FeatureProps> = ({ title, text, icon }) => {
+const Feature: React.FC<FeatureProps> = ({ title, text, icon, link }) => {
     return (
         <Stack>
-            <Flex
-                w={16}
-                h={16}
-                align={'center'}
-                justify={'center'}
-                color={'white'}
-                rounded={'full'}
-                bg={'gray.100'}
-                mb={1}>
-                {icon}
-            </Flex>
-            <Text fontWeight={600}>{title}</Text>
+            <Center>
+                <Flex
+                    w={16}
+                    h={16}
+                    align={'center'}
+                    justify={'center'}
+                    color={'white'}
+                    rounded={'full'}
+                    bg={'gray.100'}
+                    mb={1}>
+                    {icon}
+                </Flex>
+            </Center>
+            <Heading size={"md"} fontWeight={600}>{title}</Heading>
             <Text color={'gray.600'} textAlign={"left"} style={{ hyphens: "auto" }}>{text}</Text>
             <Flex>
-                <Button as={"a"} colorScheme={"blue"} variant={"outline"} rounded={"full"} href="">mehr erhfahren</Button>
+                <Button as={"a"} colorScheme={"blue"} variant={"outline"} rounded={"full"} href={link}>mehr erhfahren</Button>
             </Flex>
         </Stack>
     )
@@ -51,6 +54,7 @@ const Services: React.FC = () => {
                             Wir führen gründliche Untersuchungen durch, um selbst kleinste Anomalien zu erkennen und zu behandeln. \
                             Vertrauen Sie auf unsere Expertise, um die Gesundheit und das Wohlbefinden Ihrer Pferde sicherzustellen.'
                         }
+                        link="/dienstleistungen/#Gesundheitschecks"
                     />
                     <Feature
                         icon={<Icon color={"black"} as={CgPerformance} w={10} h={10} />}
@@ -61,6 +65,7 @@ const Services: React.FC = () => {
                             zu erreichen und dabei elegant und effizient zu bleiben. Unser oberstes Ziel ist es natürlich, für Sie die maximale \
                             Rendite durch Ihre Sportwette zu erzuielen.'
                         }
+                        link="/dienstleistungen/#Leistungsüberprüfungen"
                     />
                     <Feature
                         icon={<Icon color={"black"} as={GrCertificate} w={10} h={10} />}
@@ -70,6 +75,7 @@ const Services: React.FC = () => {
                             Diese begehrten Zertifikate erhöhen den Wert und das Ansehen Ihrer Pferde, sei es für Zucht- oder Verkaufszwecke, \
                             und verleihen ihnen einen prestigeträchtigen Status.'
                         }
+                        link="/dienstleistungen/#Zertifizierungen"
                     />
                 </SimpleGrid>
             </Box>
