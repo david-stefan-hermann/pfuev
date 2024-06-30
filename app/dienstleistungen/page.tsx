@@ -11,6 +11,8 @@ const Home: React.FC = () => {
                         <SingleService
                             key={index}
                             id={index}
+                            author={service.author}
+                            attribution={service.attribution}
                             title={service.title}
                             subtitle={service.subtitle}
                             image={service.image}
@@ -37,6 +39,8 @@ const services_data = [
         title: "Gesundheitschecks",
         subtitle: "Umfassende Gesundheitsprüfungen, um sicherzustellen, dass Ihre Pferde gesund und fit sind.",
         image: "/services/1.png",
+        author: "",
+        attribution: "",
         content: [
             {
                 heading: "Gründlichkeit in jedem Detail",
@@ -55,7 +59,9 @@ const services_data = [
     {
         title: "Leistungsanalysen",
         subtitle: "Detaillierte Leistungsanalysen zur Optimierung der Trainingsprogramme.",
-        image: "",
+        image: "/services/2.jpg",
+        author: "Foto von Jose Ricardo Barraza Morachis",
+        attribution: "https://www.pexels.com/de-de/foto/mann-reitet-pferd-1462364/",
         content: [
             {
                 heading: "Traumanalyse für Spitzenleistungen",
@@ -74,7 +80,9 @@ const services_data = [
     {
         title: "Zertifizierungen",
         subtitle: "Offizielle Zertifizierungen für Zucht- und Verkaufszwecke.",
-        image: "",
+        image: "/services/3.jpg",
+        author: "Foto von Leon Woods",
+        attribution: "https://www.pexels.com/de-de/foto/esel-auf-grasfeld-598751/",
         content: [
             {
                 heading: "Begehrte Qualitätssiegel",
