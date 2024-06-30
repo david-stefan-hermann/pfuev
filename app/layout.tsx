@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const RootLayout: React.FC<Readonly<{ children: React.ReactNode }>> = ({ children }) => {
   return (
-    <html lang="en">
+    <html lang="de">
       <body className={fonts.roboto.variable}>
         <Providers>
           <Navbar />
