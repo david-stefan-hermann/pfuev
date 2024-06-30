@@ -253,7 +253,7 @@ interface NavItem {
 const NAV_ITEMS: Array<NavItem> = [
     {
         label: 'Über uns',
-        href: '#pfuev',
+        href: '/#pfuev',
     },
     {
         label: 'Dienstleistungen',
@@ -278,14 +278,14 @@ const NAV_ITEMS: Array<NavItem> = [
     },
     {
         label: 'Unsere Partner',
-        href: '#partner',
+        href: '/#partner',
     },
     {
         label: 'Pferde-Galerie',
-        href: '#pferde',
+        href: '/#pferde',
     },
     {
         label: 'Kontakt',
-        href: '#kontakt',
+        href: '/#kontakt',
     },
 ]
