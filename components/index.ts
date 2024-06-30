@@ -6,6 +6,9 @@ import Statistics from "./Statistics"
 import Testimonials from "./Testimonials"
 import Hero from "./Hero"
 import Partners from "./Partners"
+import Services from "./Services"
+import SingleService from "./SingleService"
+import Contact from "./Contact"
 
 export {
     Navbar,
@@ -16,4 +19,7 @@ export {
     Testimonials,
     Hero,
     Partners,
+    Services,
+    SingleService,
+    Contact,
 }
