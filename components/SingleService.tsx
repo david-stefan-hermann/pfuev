@@ -17,7 +17,7 @@ import {
 import { PiHorseLight } from 'react-icons/pi';
 
 const SingleService: React.FC<SingleServiceProps> = (service) => {
-    const bg = useColorModeValue('gray.50', 'gray.800')
+    const bg = useColorModeValue('gray.100', 'gray.700')
     const conditionalBg = service.id % 2 ? bg : ""
     
     return (
