@@ -188,9 +188,8 @@ interface CarouselCard {
 
 const MobileHeroCarousel: React.FC<CarouselCard> = ({ index, card }, height: string) => {
     return (
-        <>
+        <React.Fragment key={index}>
             <Box
-                key={index}
                 height={height}
                 position="relative"
                 backgroundPosition="top"
@@ -246,7 +245,7 @@ const MobileHeroCarousel: React.FC<CarouselCard> = ({ index, card }, height: str
                     <Buttons cardLink={card.link} />
                 </Center>
             </Container>
-        </>
+        </React.Fragment>
     )
 }
 
