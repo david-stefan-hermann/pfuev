@@ -14,6 +14,7 @@ const Home: React.FC = () => {
       <Services />
       <HeaderSizedBox id="partner" />
       <Partners />
+      <HeaderSizedBox id="kontakt" />
       <Contact />
       <Footer />
     </main>
