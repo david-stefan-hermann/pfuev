@@ -53,7 +53,7 @@ const Card: React.FC<CardProps> = ({ heading, description, icon, href }) => {
                     </Text>
                 </Box>
                 <Link href={href} color={'blue.500'} isExternal>
-                mehr erhfahren
+                    mehr erhfahren
                 </Link>
             </Stack>
         </Box>
