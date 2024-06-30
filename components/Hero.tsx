@@ -33,11 +33,11 @@ const Hero: React.FC = () => {
                         </Text>
                         <br />{' '}
                         <Text color={'blue.400'} as={'span'}>
-                            Pferdischer Überprüfungsverein
+                            Pferdischer Überwachungsverein
                         </Text>{' '}
                     </Heading>
                     <Text fontSize={{ base: 'md', lg: 'lg' }} color={'gray.500'}>
-                        Willkommen beim PFÜV, dem führenden Verband für die Überprüfung und Inspektion von Pferden. Wir sorgen dafür, dass Ihre Pferde stets in bester Verfassung sind.
+                        Willkommen beim PFÜV, dem führenden Verein für die Überprüfung und Inspektion von Pferden. Wir sorgen dafür, dass Ihre Pferde stets in bester Verfassung sind.
                     </Text>
                     <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
                         <Button
