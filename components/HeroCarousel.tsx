@@ -45,6 +45,9 @@ const HeroCarousel: React.FC = () => {
     const top = useBreakpointValue({ base: '90%', md: '50%' })
     const side = useBreakpointValue({ base: '30%', md: '40px' })
 
+    // color of the buttons
+    const sliderButtonVariant = useBreakpointValue({ base: 'ghost', md: 'solid' })
+
     // This list contains all the data for carousels
     // This can be static or loaded from a server
     const cards = [
@@ -89,25 +92,27 @@ const HeroCarousel: React.FC = () => {
             />
             {/* Left Icon */}
             <IconButton
+                colorScheme={"blue"}
+                zIndex={"overlay"}
                 aria-label="left-arrow"
-                variant="ghost"
+                variant={sliderButtonVariant}
                 position="absolute"
                 left={side}
                 top={top}
                 transform={'translate(0%, -50%)'}
-                zIndex={2}
                 onClick={() => slider?.slickPrev()}>
                 <MdOutlineKeyboardArrowLeft size="40px" />
             </IconButton>
             {/* Right Icon */}
             <IconButton
+                colorScheme={"blue"}
+                zIndex={"overlay"}
                 aria-label="right-arrow"
-                variant="ghost"
+                variant={sliderButtonVariant}
                 position="absolute"
                 right={side}
                 top={top}
                 transform={'translate(0%, -50%)'}
-                zIndex={2}
                 onClick={() => slider?.slickNext()}>
                 <MdOutlineKeyboardArrowRight size="40px" />
             </IconButton>
@@ -231,10 +236,11 @@ const DesktopHeroCarousel: React.FC<CarouselCard> = ({ index, card }) => {
                 left={0}
                 bg="blackAlpha.500" // Example: black with 50% opacity
                 zIndex="overlay" // Ensure it's above the background image but below content
-            ></Box>
-            <Link position="relative" color="blue.200" zIndex="overlay" ml={4} top={2} href={card.attribution} isExternal>
-                Foto von: {card.author} <ExternalLinkIcon mx="2px" />
-            </Link>
+            >
+                <Link position="relative" color="blue.200" zIndex="overlay" ml={4} top={2} href={card.attribution} isExternal>
+                    Foto von: {card.author} <ExternalLinkIcon mx="2px" />
+                </Link>
+            </Box>
             {/* This is the block you need to change, to customize the caption */}
             <Container size="container.lg" height="600px" position="relative">
                 <Stack
