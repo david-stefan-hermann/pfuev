@@ -61,7 +61,7 @@ const TestimonialHeading: React.FC<Props> = (props) => {
     const { children } = props
 
     return (
-        <Heading as={'h3'} fontSize={'xl'}>
+        <Heading size="md" fontSize={'xl'}>
             {children}
         </Heading>
     )
@@ -73,8 +73,7 @@ const TestimonialText: React.FC<Props> = (props) => {
     return (
         <Text
             textAlign={'center'}
-            color={useColorModeValue('gray.600', 'gray.400')}
-            fontSize={'sm'}>
+            color={useColorModeValue('gray.600', 'gray.400')}>
             {children}
         </Text>
     )

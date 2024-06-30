@@ -30,6 +30,7 @@ const Card: React.FC<CardProps> = ({ heading, description, icon, href }) => {
             borderWidth="1px"
             borderRadius="lg"
             overflow="hidden"
+            bg={"white"}
             p={5}>
             <Stack align={'start'} spacing={2}>
                 <Flex
@@ -42,17 +43,17 @@ const Card: React.FC<CardProps> = ({ heading, description, icon, href }) => {
                     bg={useColorModeValue('gray.100', 'gray.700')}>
                     <Image
                         src={icon}
-                        fallback={ <PiHorseLight color='black' size={"80%"}/> }
+                        fallback={<PiHorseLight color='black' size={"80%"} />}
                     />
                 </Flex>
                 <Box mt={2}>
                     <Heading size="md">{heading}</Heading>
-                    <Text mt={1} fontSize={'sm'}>
+                    <Text mt={1} textAlign={"left"} style={{ hyphens: "auto" }}>
                         {description}
                     </Text>
                 </Box>
-                <Link href={href} color={'blue.500'} size={'sm'} isExternal>
-                    Weiterlesen
+                <Link href={href} color={'blue.500'} isExternal>
+                mehr erhfahren
                 </Link>
             </Stack>
         </Box>
@@ -61,37 +62,35 @@ const Card: React.FC<CardProps> = ({ heading, description, icon, href }) => {
 
 const Partners: React.FC = () => {
     return (
-        <Box p={4}>
-            <Stack spacing={12} py={16}>
-                <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'center'}>
-                    <Heading>
-                        Unsere Partner
-                    </Heading>
-                    <Text color={'gray.600'} fontSize={{ base: 'sm', sm: 'lg' }}>
-                        Unsere Partnerorganisationen des PFÜV spielen eine entscheidende Rolle bei der Sicherstellung höchster
-                        Standards in der Pferdegesundheit und -leistung. Jede regionale Organisation bringt ihre spezielle
-                        Expertise ein und trägt zur kontinuierlichen Verbesserung und Weiterentwicklung unserer
-                        Dienstleistungen bei. Gemeinsam mit unseren Partnern setzen wir Maßstäbe in der Pferdeinspektion und
-                        bieten ein umfassendes Netzwerk an Unterstützung und Innovation.
-                    </Text>
-                </Stack>
-                <Container maxW={'5xl'}>
-                    <Flex flexWrap="wrap" gridGap={6} justify="center">
-                        {
-                            partners_data.map((partner, index) => (
-                                <Card
-                                    key={index}
-                                    heading={partner.heading}
-                                    icon={partner.logo}
-                                    description={partner.description}
-                                    href={partner.href}
-                                />
-                            ))
-                        }
-                    </Flex>
-                </Container>
+        <Stack spacing={12} py={16} textAlign={"center"} bg={useColorModeValue('gray.100', 'gray.700')}>
+            <Heading>
+                Unsere Partner
+            </Heading>
+            <Stack spacing={4} as={Container} maxW={'3xl'} textAlign={'left'} style={{ hyphens: "auto" }}>
+                <Text color={'gray.600'}>
+                    Unsere Partnerorganisationen des PFÜV spielen eine entscheidende Rolle bei der Sicherstellung höchster
+                    Standards in der Pferdegesundheit und -leistung. Jede regionale Organisation bringt ihre spezielle
+                    Expertise ein und trägt zur kontinuierlichen Verbesserung und Weiterentwicklung unserer
+                    Dienstleistungen bei. Gemeinsam mit unseren Partnern setzen wir Maßstäbe in der Pferdeinspektion und
+                    bieten ein umfassendes Netzwerk an Unterstützung und Innovation.
+                </Text>
             </Stack>
-        </Box>
+            <Container maxW={'5xl'}>
+                <Flex flexWrap="wrap" gridGap={6} justify="center">
+                    {
+                        partners_data.map((partner, index) => (
+                            <Card
+                                key={index}
+                                heading={partner.heading}
+                                icon={partner.logo}
+                                description={partner.description}
+                                href={partner.href}
+                            />
+                        ))
+                    }
+                </Flex>
+            </Container>
+        </Stack>
     )
 }
 
