@@ -16,7 +16,6 @@ import {
     Link,
 } from '@chakra-ui/react'
 // Here we have used react-icons package for the icons
-import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi'
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md";
 // And react-slick as our Carousel Lib
 import Slider from 'react-slick'
@@ -40,13 +39,9 @@ const HeroCarousel: React.FC = () => {
     // change the state
     const [slider, setSlider] = React.useState<Slider | null>(null)
 
-    // These are the breakpoints which changes the position of the
-    // buttons as the screen size changes
-    const top = useBreakpointValue({ base: '90%', md: '50%' })
-    const side = useBreakpointValue({ base: '30%', md: '40px' })
 
-    // color of the buttons
-    const sliderButtonVariant = useBreakpointValue({ base: 'ghost', md: 'solid' })
+    // Slider Height
+    const sliderHeight = useBreakpointValue({ base: '60', md: '2xl' })
 
     // This list contains all the data for carousels
     // This can be static or loaded from a server
@@ -78,22 +73,58 @@ const HeroCarousel: React.FC = () => {
     ]
 
     return (
-        <Box position={'relative'} height={'600px'} width={'full'} overflow={'hidden'}>
-            {/* CSS files for react-slick */}
-            <link
-                rel="stylesheet"
-                type="text/css"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-            />
-            <link
-                rel="stylesheet"
-                type="text/css"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-            />
-            {/* Left Icon */}
+        <>
+            <Box position={'relative'} height={sliderHeight} width={'full'} mb={10}>
+                {/* CSS files for react-slick */}
+                <link
+                    rel="stylesheet"
+                    type="text/css"
+                    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+                />
+                <link
+                    rel="stylesheet"
+                    type="text/css"
+                    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+                />
+                {SliderButtons({ slider })}
+                {/* Slider */}
+                <Flex display={{ base: 'none', md: 'block' }}>
+                    <Slider {...settings} ref={(slider) => setSlider(slider)}>
+                        {cards.map((card, index) => (
+                            DesktopHeroCarousel({ index, card }, sliderHeight)
+                        ))}
+                    </Slider>
+                </Flex>
+                <Flex display={{ base: 'block', md: 'none' }}>
+                    <Slider {...settings} ref={(slider) => setSlider(slider)}>
+                        {cards.map((card, index) => (
+                            MobileHeroCarousel({ index, card }, sliderHeight)
+                        ))}
+                    </Slider>
+                </Flex>
+            </Box>
+            <Box display={{ base: 'block', md: 'none' }} height={sliderHeight}>
+            </Box>
+        </>
+    )
+}
+
+export default HeroCarousel
+
+const SliderButtons: React.FC<SliderButtonsProps> = ({ slider }) => {
+    // These are the breakpoints which changes the position of the
+    // buttons as the screen size changes
+    const top = useBreakpointValue({ base: '90%', md: '50%' })
+    const side = useBreakpointValue({ base: '30%', md: '40px' })
+
+    // color of the buttons
+    const sliderButtonVariant = useBreakpointValue({ base: 'ghost', md: 'solid' })
+
+    return (
+        <>
             <IconButton
                 colorScheme={"blue"}
-                zIndex={"overlay"}
+                zIndex={2}
                 aria-label="left-arrow"
                 variant={sliderButtonVariant}
                 position="absolute"
@@ -106,7 +137,7 @@ const HeroCarousel: React.FC = () => {
             {/* Right Icon */}
             <IconButton
                 colorScheme={"blue"}
-                zIndex={"overlay"}
+                zIndex={2}
                 aria-label="right-arrow"
                 variant={sliderButtonVariant}
                 position="absolute"
@@ -116,26 +147,9 @@ const HeroCarousel: React.FC = () => {
                 onClick={() => slider?.slickNext()}>
                 <MdOutlineKeyboardArrowRight size="40px" />
             </IconButton>
-            {/* Slider */}
-            <Flex display={{ base: 'none', md: 'block' }}>
-                <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                    {cards.map((card, index) => (
-                        DesktopHeroCarousel({ index, card })
-                    ))}
-                </Slider>
-            </Flex>
-            <Flex display={{ base: 'block', md: 'none' }}>
-                <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                    {cards.map((card, index) => (
-                        MobileHeroCarousel({ index, card })
-                    ))}
-                </Slider>
-            </Flex>
-        </Box>
+        </>
     )
 }
-
-export default HeroCarousel
 
 const Buttons: React.FC<CardLink> = ({ cardLink }) => {
     return (
@@ -150,10 +164,13 @@ const Buttons: React.FC<CardLink> = ({ cardLink }) => {
     )
 }
 
+interface SliderButtonsProps {
+    slider: Slider | null
+}
+
 interface CardLink {
     cardLink: string
 }
-
 
 interface CarouselCardContent {
     title: string
@@ -169,12 +186,12 @@ interface CarouselCard {
     card: CarouselCardContent
 }
 
-const MobileHeroCarousel: React.FC<CarouselCard> = ({ index, card }) => {
+const MobileHeroCarousel: React.FC<CarouselCard> = ({ index, card }, height: string) => {
     return (
         <>
             <Box
                 key={index}
-                height={'60'}
+                height={height}
                 position="relative"
                 backgroundPosition="top"
                 backgroundRepeat="repeat"
@@ -189,22 +206,38 @@ const MobileHeroCarousel: React.FC<CarouselCard> = ({ index, card }) => {
                     left={0}
                     bg="blackAlpha.500" // Example: black with 50% opacity
                     zIndex="overlay" // Ensure it's above the background image but below content
-                ></Box>
-                <Link position="absolute" color="blue.200" zIndex="overlay" ml={4} bottom={2} href={card.attribution} isExternal>
-                    Foto von: {card.author} <ExternalLinkIcon mx="2px" />
-                </Link>
+                >
+                    <Link position="absolute" color="blue.200" zIndex="overlay" ml={4} top={2} href={card.attribution} isExternal>
+                        Foto von: {card.author} <ExternalLinkIcon mx="2px" />
+                    </Link>
+                </Box>
+                <Container size="container.lg" height={height} position="relative" >
+                    <Stack
+                        spacing={6}
+                        w={'90%'}
+                        maxW={'lg'}
+                        position="absolute"
+                        top="50%"
+                        transform="translate(0, -50%)"
+                        zIndex="overlay"
+                        textAlign={'center'}>
+                        <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }} color="White">
+                            {card.title}
+                        </Heading>
+                    </Stack>
+                </Container>
             </Box>
-            {/* This is the block you need to change, to customize the caption */}
-            <Container size="container.lg" height="600px" position="relative" px={0}>
+            <Container
+                key={index}
+                height={height}
+                position="relative"
+                px={0}>
                 <Wrap
                     spacing={4}
                     px={4}
                     py={4}
                     textAlign="center"
                     maxW={'lg'}>
-                    <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }} color="DarkText">
-                        {card.title}
-                    </Heading>
                     <Text fontSize={{ base: 'md', lg: 'lg' }} color="DarkText">
                         {card.text}
                     </Text>
@@ -217,15 +250,16 @@ const MobileHeroCarousel: React.FC<CarouselCard> = ({ index, card }) => {
     )
 }
 
-const DesktopHeroCarousel: React.FC<CarouselCard> = ({ index, card }) => {
+const DesktopHeroCarousel: React.FC<CarouselCard> = ({ index, card }, height: string) => {
     return (
         <Box
             key={index}
-            height={'6xl'}
+            height={height}
             position="relative"
-            backgroundPosition="top"
+            bgColor={"blue"}
+            backgroundPosition="center left"
             backgroundRepeat="no-repeat"
-            backgroundSize="contain"
+            backgroundSize="cover"
             backgroundImage={`url(${card.image})`}>
             {/* Overlay Box with color filter */}
             <Box
@@ -242,7 +276,7 @@ const DesktopHeroCarousel: React.FC<CarouselCard> = ({ index, card }) => {
                 </Link>
             </Box>
             {/* This is the block you need to change, to customize the caption */}
-            <Container size="container.lg" height="600px" position="relative">
+            <Container size="container.lg" height={height} position="relative" >
                 <Stack
                     spacing={6}
                     w={'full'}
