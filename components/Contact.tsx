@@ -45,9 +45,9 @@ const Contact: React.FC = () => {
                                         Sprechen Sie die folgenden Worte mit klarer und fester Stimme:
                                     </ListItem>
                                     <Text fontWeight="bold" fontStyle="italic">
-                                        "Oh mächtiger Gott des PFÜV, höre mein Gebet. Schenke meinen Pferden
+                                        &quot;Oh mächtiger Gott des PFÜV, höre mein Gebet. Schenke meinen Pferden
                                         Gesundheit und Stärke und vor allem ein Zertifikat. Möge dein Segen über ihnen sein und sie auf
-                                        ihren Wegen beschützen. Ich danke dir für deine göttliche Fürsorge."
+                                        ihren Wegen beschützen. Ich danke dir für deine göttliche Fürsorge.&quot;
                                     </Text>
                                     <ListItem>
                                         Verweilen Sie noch einen Moment in Stille, um die Verbindung zu
