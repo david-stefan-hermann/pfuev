@@ -38,9 +38,9 @@ const services_data = [
     {
         title: "Gesundheitschecks",
         subtitle: "Umfassende Gesundheitsprüfungen, um sicherzustellen, dass Ihre Pferde gesund und fit sind.",
-        image: "/services/1.png",
-        author: "",
-        attribution: "",
+        image: "/services/3.jpg",
+        author: "Foto von Leon Woods",
+        attribution: "https://www.pexels.com/de-de/foto/esel-auf-grasfeld-598751/",
         content: [
             {
                 heading: "Gründlichkeit in jedem Detail",
@@ -80,9 +80,9 @@ const services_data = [
     {
         title: "Zertifizierungen",
         subtitle: "Offizielle Zertifizierungen für Zucht- und Verkaufszwecke.",
-        image: "/services/3.jpg",
-        author: "Foto von Leon Woods",
-        attribution: "https://www.pexels.com/de-de/foto/esel-auf-grasfeld-598751/",
+        image: "/services/1.png",
+        author: "",
+        attribution: "",
         content: [
             {
                 heading: "Begehrte Qualitätssiegel",
