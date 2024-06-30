@@ -12,6 +12,8 @@ import {
     ListItem,
     ListIcon,
     Button,
+    Container,
+    Center,
 } from '@chakra-ui/react'
 import { FaCheckCircle } from 'react-icons/fa'
 
@@ -20,6 +22,7 @@ interface Props {
     price: string
     duration: string
     button: boolean
+    popular: boolean
     features: string[]
 }
 
@@ -75,26 +78,26 @@ const PriceWrapper: React.FC<Props> = (item) => {
 
 const Pricing: React.FC = () => {
     return (
-        <Box py={12}>
-            <VStack spacing={2} textAlign="center">
-                <Heading as="h1" fontSize="4xl">
-                    Plans that fit your need
-                </Heading>
-                <Text fontSize="lg" color={'gray.500'}>
-                    Start with 14-day free trial. No credit card needed. Cancel at anytime.
-                </Text>
-            </VStack>
+        <Container maxW={'7xl'} py={16} as={Stack} spacing={12}>
+            <Center w={"full"} textAlign={"center"}>
+                <VStack spacing={2}>
+                    <Heading>Preise nach Ihren Bedürfnissen</Heading>
+                    <Text fontSize="lg" color={'gray.500'}>
+                        Besuchen Sie uns vor Ort und wählen Sie das für Sie passende Angebot aus.
+                    </Text>
+                </VStack>
+            </Center>
             <Stack
                 direction={{ base: 'column', md: 'row' }}
                 textAlign="center"
                 justify="center"
                 spacing={{ base: 4, lg: 10 }}
-                py={10}>
+                py={4}>
                 {PRICING_DATA.map((item, index) => (
                     <PriceWrapper key={index} {...item} />
                 ))}
             </Stack>
-        </Box>
+        </Container>
     )
 }
 
@@ -106,10 +109,11 @@ const PRICING_DATA = [
         price: '149',
         duration: 'einmalig',
         button: false,
+        popular: false,
         features: [
             '1 Gesundheitscheck',
-            'Lorem, ipsum dolor.',
-            '5TB Lorem, ipsum dolor.'
+            '1 Leistungscheck',
+            '1 Zertifikat für 2 Jahre',
         ],
     },
     {
@@ -117,12 +121,12 @@ const PRICING_DATA = [
         price: '19',
         duration: 'monatlich',
         button: false,
+        popular: true,
         features: [
-            'unlimited build minutes',
-            'Lorem, ipsum dolor.',
-            '5TB Lorem, ipsum dolor.',
-            '5TB Lorem, ipsum dolor.',
-            '5TB Lorem, ipsum dolor.',
+            '2 Gesundheitschecks im Jahr',
+            '2 Leistungschecks im Jahr',
+            '1 Zeriifikat automatisch verlängert',
+            'jedes weitere Pferd: 5€/Monat',
         ],
     },
     {
@@ -130,6 +134,13 @@ const PRICING_DATA = [
         price: '0',
         duration: 'auf Anfrage',
         button: true,
-        features: ['unlimited build minutes', 'Lorem, ipsum dolor.', '5TB Lorem, ipsum dolor.'],
+        popular: false,
+        features: [
+            'unlimitierte Gesundheitschecks',
+            'unlimitierte Leistungschecks',
+            'unlimitierte Zertifikate',
+            'unlimitierte Pferde',
+            '24/7 Support'
+        ],
     },
 ]
