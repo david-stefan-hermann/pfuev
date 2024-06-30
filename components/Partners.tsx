@@ -43,6 +43,7 @@ const Card: React.FC<CardProps> = ({ heading, description, icon, href }) => {
                     bg={useColorModeValue('gray.100', 'gray.700')}>
                     <Image
                         src={icon}
+                        alt="Partner Logo"
                         fallback={<PiHorseLight color='black' size={"80%"} />}
                     />
                 </Flex>
