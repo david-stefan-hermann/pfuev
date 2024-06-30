@@ -281,8 +281,8 @@ const NAV_ITEMS: Array<NavItem> = [
         href: '/#partner',
     },
     {
-        label: 'Pferde-Galerie',
-        href: '/#pferde',
+        label: 'Preise',
+        href: '/#preise',
     },
     {
         label: 'Kontakt',
