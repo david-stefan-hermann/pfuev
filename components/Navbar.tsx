@@ -63,7 +63,7 @@ const Navbar: React.FC = () => {
                     </Flex>
                 </Flex>
 
-                <Stack
+                { /* <Stack
                     flex={{ base: 1, md: 0 }}
                     justify={'flex-end'}
                     direction={'row'}
@@ -84,7 +84,7 @@ const Navbar: React.FC = () => {
                         }}>
                         Sign Up
                     </Button>
-                </Stack>
+                </Stack> */ }
             </Flex>
 
             <Collapse in={isOpen} animateOpacity>
