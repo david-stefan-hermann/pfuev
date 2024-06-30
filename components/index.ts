@@ -9,6 +9,7 @@ import Partners from "./Partners"
 import Services from "./Services"
 import SingleService from "./SingleService"
 import Contact from "./Contact"
+import Pricing from "./Pricing"
 
 export {
     Navbar,
@@ -22,4 +23,5 @@ export {
     Services,
     SingleService,
     Contact,
+    Pricing,
 }

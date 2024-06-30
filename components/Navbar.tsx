@@ -63,7 +63,7 @@ const Navbar: React.FC = () => {
                     </Flex>
                 </Flex>
 
-                <Stack
+                { /* <Stack
                     flex={{ base: 1, md: 0 }}
                     justify={'flex-end'}
                     direction={'row'}
@@ -84,7 +84,7 @@ const Navbar: React.FC = () => {
                         }}>
                         Sign Up
                     </Button>
-                </Stack>
+                </Stack> */ }
             </Flex>
 
             <Collapse in={isOpen} animateOpacity>
@@ -257,7 +257,7 @@ const NAV_ITEMS: Array<NavItem> = [
     },
     {
         label: 'Dienstleistungen',
-        href: '/dienstleistungen',
+        href: '/#dienstleistungen',
         children: [
             {
                 label: 'Gesundheitschecks',
@@ -281,8 +281,8 @@ const NAV_ITEMS: Array<NavItem> = [
         href: '/#partner',
     },
     {
-        label: 'Pferde-Galerie',
-        href: '/#pferde',
+        label: 'Preise',
+        href: '/#preise',
     },
     {
         label: 'Kontakt',

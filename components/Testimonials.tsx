@@ -106,7 +106,7 @@ const Testimonials: React.FC = () => {
         <Box bg={useColorModeValue('gray.100', 'gray.700')}>
             <Container maxW={'7xl'} py={16} as={Stack} spacing={12}>
                 <Center w={"full"} textAlign={"center"}>
-                    <Heading>Was unsere Kundschaft sagt:</Heading>
+                    <Heading>Was unsere Kundschaft sagt</Heading>
                 </Center>
                 <Stack
                     direction={{ base: 'column', md: 'row' }}
