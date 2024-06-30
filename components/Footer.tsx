@@ -11,6 +11,7 @@ import {
     Image
 } from '@chakra-ui/react'
 import { ReactNode } from 'react'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
 
 const Logo: React.FC = (props: any) => {
     return (
@@ -28,6 +29,7 @@ const SocialButton: React.FC<{ children: ReactNode, label: string, href: string 
             cursor={'pointer'}
             as={'a'}
             href={href}
+            target={'_blank'}
             display={'inline-flex'}
             alignItems={'center'}
             justifyContent={'center'}
@@ -83,6 +85,14 @@ const Footer: React.FC = () => {
                     justify={{ base: 'center', md: 'space-between' }}
                     align={{ base: 'center', md: 'center' }}>
                     <Text>© 2024 PFÜV - Pferdischer Überwachungsverein</Text>
+                    <Stack direction={'row'} spacing={6}>
+                        <SocialButton label={'Github'} href={'https://github.com/david-stefan-hermann'}>
+                            <FaGithub />
+                        </SocialButton>
+                        <SocialButton label={'LinkedIn'} href={'https://www.linkedin.com/in/david-hermann-cs/'}>
+                            <FaLinkedin />
+                        </SocialButton>
+                    </Stack>
                 </Container>
             </Box>
         </Box>
