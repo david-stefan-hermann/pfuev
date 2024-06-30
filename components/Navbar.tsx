@@ -257,7 +257,7 @@ const NAV_ITEMS: Array<NavItem> = [
     },
     {
         label: 'Dienstleistungen',
-        href: '/dienstleistungen',
+        href: '/#dienstleistungen',
         children: [
             {
                 label: 'Gesundheitschecks',
