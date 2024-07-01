@@ -2,7 +2,6 @@
 
 import {
     Box,
-    Center,
     Container,
     Flex,
     Heading,
@@ -10,12 +9,12 @@ import {
     Link,
     Stack,
     Text,
-    VStack,
     useColorModeValue,
 } from '@chakra-ui/react'
 import {
     PiHorseLight,
 } from "react-icons/pi"
+import { DefaultSection } from '@/components'
 
 interface CardProps {
     heading: string
@@ -68,37 +67,31 @@ const Card: React.FC<CardProps> = ({ heading, description, icon, href }) => {
 
 const Partners: React.FC = () => {
     return (
-        <Container maxW='full' as={Stack} p={0} bg={useColorModeValue('gray.100', 'gray.700')}>
-            <Container maxW='7xl' as={Stack} spacing={12} py={16} textAlign="center">
-                <Center w="full" textAlign="center">
-                    <VStack spacing={2}>
-                        <Heading>Unsere Partner</Heading>
-                        <Text fontSize="lg" color='gray.500' textAlign="left">
-                            Unsere Partnerorganisationen des PFÜV spielen eine entscheidende Rolle bei der Sicherstellung höchster
-                            Standards in der Pferdegesundheit und -leistung. Jede regionale Organisation bringt ihre spezielle
-                            Expertise ein und trägt zur kontinuierlichen Verbesserung und Weiterentwicklung unserer
-                            Dienstleistungen bei. Gemeinsam mit unseren Partnern setzen wir Maßstäbe in der Pferdeinspektion und
-                            bieten ein umfassendes Netzwerk an Unterstützung und Innovation.
-                        </Text>
-                    </VStack>
-                </Center>
-                <Container maxW='5xl'>
-                    <Flex flexWrap="wrap" gridGap={6} justify="center">
-                        {
-                            partners_data.map((partner, index) => (
-                                <Card
-                                    key={index}
-                                    heading={partner.heading}
-                                    icon={partner.logo}
-                                    description={partner.description}
-                                    href={partner.href}
-                                />
-                            ))
-                        }
-                    </Flex>
-                </Container>
+        <DefaultSection
+            title='Unsere Partner'
+            subtitle='Unsere Partnerorganisationen des PFÜV spielen eine entscheidende Rolle bei der Sicherstellung höchster
+                Standards in der Pferdegesundheit und -leistung. Jede regionale Organisation bringt ihre spezielle
+                Expertise ein und trägt zur kontinuierlichen Verbesserung und Weiterentwicklung unserer
+                Dienstleistungen bei. Gemeinsam mit unseren Partnern setzen wir Maßstäbe in der Pferdeinspektion und
+                bieten ein umfassendes Netzwerk an Unterstützung und Innovation.'
+            bg={true}
+        >
+            <Container maxW='5xl'>
+                <Flex flexWrap="wrap" gridGap={6} justify="center">
+                    {
+                        partners_data.map((partner, index) => (
+                            <Card
+                                key={index}
+                                heading={partner.heading}
+                                icon={partner.logo}
+                                description={partner.description}
+                                href={partner.href}
+                            />
+                        ))
+                    }
+                </Flex>
             </Container>
-        </Container>
+        </DefaultSection>
     )
 }
 

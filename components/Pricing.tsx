@@ -4,7 +4,6 @@ import {
     Box,
     Stack,
     HStack,
-    Heading,
     Text,
     VStack,
     useColorModeValue,
@@ -12,10 +11,9 @@ import {
     ListItem,
     ListIcon,
     Button,
-    Container,
-    Center,
 } from '@chakra-ui/react'
 import { FaCheckCircle } from 'react-icons/fa'
+import { DefaultSection } from '@/components'
 
 interface Props {
     title: string
@@ -78,15 +76,10 @@ const PriceWrapper: React.FC<Props> = (item) => {
 
 const Pricing: React.FC = () => {
     return (
-        <Container maxW='7xl' py={16} as={Stack} spacing={12}>
-            <Center w="full" textAlign="center">
-                <VStack spacing={2}>
-                    <Heading>Preise nach Ihren Bedürfnissen</Heading>
-                    <Text fontSize="lg" color='gray.500'>
-                        Besuchen Sie uns vor Ort und wählen Sie das für Sie passende Angebot aus.
-                    </Text>
-                </VStack>
-            </Center>
+        <DefaultSection
+            title='Preise nach Ihren Bedürfnissen'
+            subtitle='Besuchen Sie uns vor Ort und wählen Sie das für Sie passende Angebot aus.'
+        >
             <Stack
                 direction={{ base: 'column', md: 'row' }}
                 textAlign="center"
@@ -97,7 +90,7 @@ const Pricing: React.FC = () => {
                     <PriceWrapper key={index} {...item} />
                 ))}
             </Stack>
-        </Container>
+        </DefaultSection>
     )
 }
 
@@ -125,7 +118,7 @@ const PRICING_DATA = [
         features: [
             '2 Gesundheitschecks im Jahr',
             '2 Leistungschecks im Jahr',
-            '1 Zeriifikat automatisch verlängert',
+            '1 Zertifikat - automatisch verlängert',
             'jedes weitere Pferd: 5€/Monat',
         ],
     },
