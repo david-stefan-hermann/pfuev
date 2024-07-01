@@ -1,6 +1,7 @@
 'use client'
 
 import {
+    Box,
     Button,
     Flex,
     Heading,
@@ -59,13 +60,16 @@ const Hero: React.FC = () => {
                 </Stack>
             </Flex>
             <Flex flex={1}>
-                <Image
-                    alt={'Login Image'}
-                    objectFit={'contain'}
-                    src={
-                        '/hero/logo.png'
-                    }
-                />
+                <Box display="flex" alignItems="center">
+                    <Image
+                        maxH={"2xl"}
+                        alt={'Login Image'}
+                        objectFit={'contain'}
+                        src={
+                            '/hero/logo.png'
+                        }
+                    />
+                </Box>
             </Flex>
         </Stack>
     )
