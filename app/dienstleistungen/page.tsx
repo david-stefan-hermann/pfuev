@@ -6,18 +6,18 @@ const Home: React.FC = () => {
         <main>
             <HeaderSizedBox id="" />
             {services_data.map((service, index) => (
-                    <React.Fragment key={index}>
-                        <HeaderSizedBox id={services_data_ids[index]} />
-                        <SingleService
-                            id={index}
-                            author={service.author}
-                            attribution={service.attribution}
-                            title={service.title}
-                            subtitle={service.subtitle}
-                            image={service.image}
-                            content={service.content}
-                        />
-                    </React.Fragment>
+                <React.Fragment key={index}>
+                    <HeaderSizedBox id={services_data_ids[index]} />
+                    <SingleService
+                        id={index}
+                        author={service.author}
+                        attribution={service.attribution}
+                        title={service.title}
+                        subtitle={service.subtitle}
+                        image={service.image}
+                        content={service.content}
+                    />
+                </React.Fragment>
             ))}
             <Footer />
         </main>
