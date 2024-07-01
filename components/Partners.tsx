@@ -55,9 +55,12 @@ const Card: React.FC<CardProps> = ({ heading, description, icon, href }) => {
                         {description}
                     </Text>
                 </Box>
-                <Link href={href} color={'blue.500'} isExternal>
-                    mehr erhfahren
-                </Link>
+                {
+                    href &&
+                    <Link href={href} color={'blue.500'} isExternal>
+                        mehr erhfahren
+                    </Link>
+                }
             </Stack>
         </Box>
     )
@@ -106,30 +109,30 @@ const partners_data = [
         heading: 'PFÜV Nord',
         description: 'Die führende Organisation für Pferdegesundheit und -inspektion im Norden. PFÜV Nord setzt Maßstäbe in der Gesundheitsprüfung und Leistungsanalyse.',
         logo: '/partners/nord.png',
-        href: '#',
+        href: '',
     },
     {
         heading: 'PFÜV Süd',
         description: 'PFÜV Süd bietet umfassende Zertifizierungs- und Überprüfungsdienste für Pferde in der südlichen Region, spezialisiert auf nachhaltige Methoden.',
         logo: '/partners/sued.png',
-        href: '#',
+        href: '',
     },
     {
         heading: 'PFÜV Pferdland',
         description: 'Lokale Reichweite und Standards zeichnen PFÜV Pferdland aus, der vertrauenswürdige Partner für Pferdeinspektion im Rheinland.',
         logo: '/partners/pferdl.png',
-        href: '#',
+        href: '',
     },
     {
         heading: 'PFÜV Austria',
         description: 'Als zuverlässiger Partner für Pferdebesitzer und Züchter in Österreich steht PFÜV Austria für höchste Qualität in der Pferdeinspektion und Zertifizierung',
         logo: '/partners/aust.png',
-        href: '#',
+        href: '',
     },
     {
         heading: 'PFÜV Schweiz',
         description: 'PFÜV Schweiz AG kombiniert modernste Technologien und erfahrene Experten, um die Gesundheit und Leistung von Pferden in der Schweiz zu gewährleisten.',
         logo: '/partners/swiss.png',
-        href: '#',
+        href: '',
     },
 ]
