@@ -13,7 +13,6 @@ import {
     Link,
     Center,
 } from '@chakra-ui/react'
-import { Interface } from 'readline'
 
 interface Props {
     children: React.ReactNode
@@ -31,11 +30,11 @@ const TestimonialContent: React.FC<Props> = (props) => {
     return (
         <Stack
             bg={useColorModeValue('white', 'gray.800')}
-            boxShadow={'lg'}
+            boxShadow='lg'
             p={8}
-            rounded={'xl'}
-            align={'center'}
-            pos={'relative'}
+            rounded='xl'
+            align='center'
+            pos='relative'
             _after={{
                 content: `""`,
                 w: 0,
@@ -61,7 +60,7 @@ const TestimonialHeading: React.FC<Props> = (props) => {
     const { children } = props
 
     return (
-        <Heading size="md" fontSize={'xl'}>
+        <Heading size="md" fontSize='xl'>
             {children}
         </Heading>
     )
@@ -72,7 +71,7 @@ const TestimonialText: React.FC<Props> = (props) => {
 
     return (
         <Text
-            textAlign={'center'}
+            textAlign='center'
             color={useColorModeValue('gray.600', 'gray.400')}>
             {children}
         </Text>
@@ -89,11 +88,11 @@ interface TestimonialAvatarProps {
 
 const TestimonialAvatar: React.FC<TestimonialAvatarProps> = ({ src, link, name, title }) => {
     return (
-        <Flex align={'center'} mt={8} direction={'column'}>
+        <Flex align='center' mt={8} direction='column'>
             <Avatar size="lg" src={src} mb={2} />
-            <Stack spacing={-1} align={'center'}>
+            <Stack spacing={-1} align='center'>
                 <Link fontWeight={600} href={link} isExternal>{name}<ExternalLinkIcon ml={1} mb={1} /></Link>
-                <Text fontSize={'sm'} color={useColorModeValue('gray.600', 'gray.400')}>
+                <Text fontSize='sm' color={useColorModeValue('gray.600', 'gray.400')}>
                     {title}
                 </Text>
             </Stack>
@@ -104,8 +103,8 @@ const TestimonialAvatar: React.FC<TestimonialAvatarProps> = ({ src, link, name, 
 const Testimonials: React.FC = () => {
     return (
         <Box bg={useColorModeValue('gray.100', 'gray.700')}>
-            <Container maxW={'7xl'} py={16} as={Stack} spacing={12}>
-                <Center w={"full"} textAlign={"center"}>
+            <Container maxW='7xl' py={16} as={Stack} spacing={12}>
+                <Center w="full" textAlign="center">
                     <Heading>Was unsere Kundschaft sagt</Heading>
                 </Center>
                 <Stack
@@ -119,12 +118,10 @@ const Testimonials: React.FC = () => {
                             </TestimonialText>
                         </TestimonialContent>
                         <TestimonialAvatar
-                            src={
-                                '/testimonials/1.jpg'
-                            }
-                            link={'https://www.pexels.com/de-de/foto/mann-der-cowboyhut-tragt-2250519/'}
-                            name={'Thomas Becker'}
-                            title={'Pferdetrainer und Cowboy'}
+                            src='/testimonials/1.jpg'
+                            link='https://www.pexels.com/de-de/foto/mann-der-cowboyhut-tragt-2250519/'
+                            name='Thomas Becker'
+                            title='Pferdetrainer und Cowboy'
                         />
                     </Testimonial>
                     <Testimonial>
@@ -135,12 +132,10 @@ const Testimonials: React.FC = () => {
                             </TestimonialText>
                         </TestimonialContent>
                         <TestimonialAvatar
-                            src={
-                                '/testimonials/2.jpg'
-                            }
-                            link={'https://www.pexels.com/de-de/foto/vorbereitung-festhalten-halten-pferd-7882376/'}
-                            name={'Anna Müller'}
-                            title={'Pferdebesitzerin und Züchterin'}
+                            src='/testimonials/2.jpg'
+                            link='https://www.pexels.com/de-de/foto/vorbereitung-festhalten-halten-pferd-7882376/'
+                            name='Anna Müller'
+                            title='Pferdebesitzerin und Züchterin'
                         />
                     </Testimonial>
                     <Testimonial>
@@ -151,12 +146,10 @@ const Testimonials: React.FC = () => {
                             </TestimonialText>
                         </TestimonialContent>
                         <TestimonialAvatar
-                            src={
-                                '/testimonials/3.jpg'
-                            }
-                            link={'https://www.pexels.com/de-de/foto/schnee-natur-frau-romantisch-7787638/'}
-                            name={'Maria Schneider'}
-                            title={'Reitstallbesitzerin'}
+                            src='/testimonials/3.jpg'
+                            link='https://www.pexels.com/de-de/foto/schnee-natur-frau-romantisch-7787638/'
+                            name='Maria Schneider'
+                            title='Reitstallbesitzerin'
                         />
                     </Testimonial>
                 </Stack>

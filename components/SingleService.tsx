@@ -1,6 +1,6 @@
 'use client'
 
-import { ChatIcon, ExternalLinkIcon } from '@chakra-ui/icons';
+import { ChatIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 import {
     Box,
     Heading,
@@ -14,15 +14,15 @@ import {
     Center,
     Link,
 } from '@chakra-ui/react'
-import { PiHorseLight } from 'react-icons/pi';
+import { PiHorseLight } from 'react-icons/pi'
 
 const SingleService: React.FC<SingleServiceProps> = (service) => {
     const bg = useColorModeValue('gray.100', 'gray.700')
     const conditionalBg = service.id % 2 ? bg : ""
     
     return (
-        <Container as={Stack} maxW={"full"} py={16} bg={conditionalBg}>
-            <Container as={Stack} maxW={'5xl'} spacing={12}>
+        <Container as={Stack} maxW="full" py={16} bg={conditionalBg}>
+            <Container as={Stack} maxW='5xl' spacing={12}>
                 <Box
                     display="flex"
                     flexDirection={{ base: 'column', sm: 'row' }}
@@ -97,7 +97,7 @@ const SingleService: React.FC<SingleServiceProps> = (service) => {
                 </VStack>
 
                 <Center>
-                    <Button as={"a"} colorScheme={"blue"} variant={"solid"} rounded={"full"} href="/#kontakt">
+                    <Button as="a" colorScheme="blue" variant="solid" rounded="full" href="/#kontakt">
                         <ChatIcon mr={2} mt={1} />
                         Jetzt Kontaktieren
                     </Button>
@@ -112,7 +112,7 @@ export default SingleService
 const ServiceParagraph: React.FC<SingleServiceContent> = ({ heading, text }) => {
     return (
         <>
-            <Heading size={"lg"}>{heading}</Heading>
+            <Heading size="lg">{heading}</Heading>
             <Text as="p" fontSize="lg" py={4}>{text}</Text>
         </>
     )

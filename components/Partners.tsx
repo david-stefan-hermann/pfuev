@@ -28,36 +28,36 @@ const Card: React.FC<CardProps> = ({ heading, description, icon, href }) => {
     return (
         <Box
             maxW={{ base: 'full', md: '275px' }}
-            w={'full'}
+            w='full'
             borderWidth="1px"
             borderRadius="lg"
             overflow="hidden"
-            bg={"white"}
+            bg="white"
             p={5}>
-            <Stack align={'start'} spacing={2}>
+            <Stack align='start' spacing={2}>
                 <Flex
                     w={28}
                     h={28}
-                    align={'center'}
-                    justify={'center'}
-                    color={'white'}
-                    rounded={'full'}
+                    align='center'
+                    justify='center'
+                    color='white'
+                    rounded='full'
                     bg={useColorModeValue('gray.100', 'gray.700')}>
                     <Image
                         src={icon}
                         alt="Partner Logo"
-                        fallback={<PiHorseLight color='black' size={"80%"} />}
+                        fallback={<PiHorseLight color='black' size="80%" />}
                     />
                 </Flex>
                 <Box mt={2}>
                     <Heading size="md">{heading}</Heading>
-                    <Text mt={1} textAlign={"left"} style={{ hyphens: "auto" }}>
+                    <Text mt={1} textAlign="left" style={{ hyphens: "auto" }}>
                         {description}
                     </Text>
                 </Box>
                 {
                     href &&
-                    <Link href={href} color={'blue.500'} isExternal>
+                    <Link href={href} color='blue.500' isExternal>
                         mehr erhfahren
                     </Link>
                 }
@@ -68,12 +68,12 @@ const Card: React.FC<CardProps> = ({ heading, description, icon, href }) => {
 
 const Partners: React.FC = () => {
     return (
-        <Container maxW={'full'} as={Stack} p={0} bg={useColorModeValue('gray.100', 'gray.700')}>
-            <Container maxW={'7xl'} as={Stack} spacing={12} py={16} textAlign={"center"}>
-                <Center w={"full"} textAlign={"center"}>
+        <Container maxW='full' as={Stack} p={0} bg={useColorModeValue('gray.100', 'gray.700')}>
+            <Container maxW='7xl' as={Stack} spacing={12} py={16} textAlign="center">
+                <Center w="full" textAlign="center">
                     <VStack spacing={2}>
                         <Heading>Unsere Partner</Heading>
-                        <Text fontSize="lg" color={'gray.500'} textAlign={"left"}>
+                        <Text fontSize="lg" color='gray.500' textAlign="left">
                             Unsere Partnerorganisationen des PFÜV spielen eine entscheidende Rolle bei der Sicherstellung höchster
                             Standards in der Pferdegesundheit und -leistung. Jede regionale Organisation bringt ihre spezielle
                             Expertise ein und trägt zur kontinuierlichen Verbesserung und Weiterentwicklung unserer
@@ -82,7 +82,7 @@ const Partners: React.FC = () => {
                         </Text>
                     </VStack>
                 </Center>
-                <Container maxW={'5xl'}>
+                <Container maxW='5xl'>
                     <Flex flexWrap="wrap" gridGap={6} justify="center">
                         {
                             partners_data.map((partner, index) => (
