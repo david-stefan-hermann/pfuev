@@ -1,19 +1,7 @@
 'use client'
 
-import {
-    Box,
-    Container,
-    Flex,
-    Heading,
-    Image,
-    Link,
-    Stack,
-    Text,
-    useColorModeValue,
-} from '@chakra-ui/react'
-import {
-    PiHorseLight,
-} from "react-icons/pi"
+import { Box, Container, Flex, Heading, Image, Link, Stack, Text, useColorModeValue } from '@chakra-ui/react'
+import { PiHorseLight } from "react-icons/pi"
 import { DefaultSection } from '@/components'
 
 interface CardProps {
@@ -68,18 +56,14 @@ const Card: React.FC<CardProps> = ({ heading, description, icon, href }) => {
 const Partners: React.FC = () => {
     return (
         <DefaultSection
-            title='Unsere Partner'
-            subtitle='Unsere Partnerorganisationen des PFÜV spielen eine entscheidende Rolle bei der Sicherstellung höchster
-                Standards in der Pferdegesundheit und -leistung. Jede regionale Organisation bringt ihre spezielle
-                Expertise ein und trägt zur kontinuierlichen Verbesserung und Weiterentwicklung unserer
-                Dienstleistungen bei. Gemeinsam mit unseren Partnern setzen wir Maßstäbe in der Pferdeinspektion und
-                bieten ein umfassendes Netzwerk an Unterstützung und Innovation.'
+            title={PARTNERS_TITLE.title}
+            subtitle={PARTNERS_TITLE.subtitle}
             bg={true}
         >
             <Container maxW='5xl'>
                 <Flex flexWrap="wrap" gridGap={6} justify="center">
                     {
-                        partners_data.map((partner, index) => (
+                        PARTNERS_DATA.map((partner, index) => (
                             <Card
                                 key={index}
                                 heading={partner.heading}
@@ -97,7 +81,16 @@ const Partners: React.FC = () => {
 
 export default Partners
 
-const partners_data = [
+const PARTNERS_TITLE = {
+    title: 'Unsere Partner',
+    subtitle: `Unsere Partnerorganisationen des PFÜV spielen eine entscheidende Rolle bei der Sicherstellung höchster
+        Standards in der Pferdegesundheit und - leistung.Jede regionale Organisation bringt ihre spezielle
+        Expertise ein und trägt zur kontinuierlichen Verbesserung und Weiterentwicklung unserer
+        Dienstleistungen bei.Gemeinsam mit unseren Partnern setzen wir Maßstäbe in der Pferdeinspektion und
+        bieten ein umfassendes Netzwerk an Unterstützung und Innovation.`,
+}
+
+const PARTNERS_DATA = [
     {
         heading: 'PFÜV Nord',
         description: 'Die führende Organisation für Pferdegesundheit und -inspektion im Norden. PFÜV Nord setzt Maßstäbe in der Gesundheitsprüfung und Leistungsanalyse.',

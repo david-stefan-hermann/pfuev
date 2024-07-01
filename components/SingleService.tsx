@@ -1,20 +1,32 @@
 'use client'
 
 import { ChatIcon, ExternalLinkIcon } from '@chakra-ui/icons'
-import {
-    Box,
-    Heading,
-    Image,
-    Text,
-    useColorModeValue,
-    Container,
-    VStack,
-    Stack,
-    Button,
-    Center,
-    Link,
-} from '@chakra-ui/react'
+import { Box, Heading, Image, Text, useColorModeValue, Container, VStack, Stack, Button, Center, Link } from '@chakra-ui/react'
 import { PiHorseLight } from 'react-icons/pi'
+
+interface SingleServiceContent {
+    heading: string
+    text: string
+}
+
+interface SingleServiceProps {
+    id: number
+    title: string
+    subtitle: string
+    image: string
+    author: string
+    attribution: string
+    content: SingleServiceContent[]
+}
+
+const ServiceParagraph: React.FC<SingleServiceContent> = ({ heading, text }) => {
+    return (
+        <>
+            <Heading size="lg">{heading}</Heading>
+            <Text as="p" fontSize="lg" py={4}>{text}</Text>
+        </>
+    )
+}
 
 const SingleService: React.FC<SingleServiceProps> = (service) => {
     const bg = useColorModeValue('gray.100', 'gray.700')
@@ -108,27 +120,3 @@ const SingleService: React.FC<SingleServiceProps> = (service) => {
 }
 
 export default SingleService
-
-const ServiceParagraph: React.FC<SingleServiceContent> = ({ heading, text }) => {
-    return (
-        <>
-            <Heading size="lg">{heading}</Heading>
-            <Text as="p" fontSize="lg" py={4}>{text}</Text>
-        </>
-    )
-}
-
-interface SingleServiceContent {
-    heading: string
-    text: string
-}
-
-interface SingleServiceProps {
-    id: number
-    title: string
-    subtitle: string
-    image: string
-    author: string
-    attribution: string
-    content: SingleServiceContent[]
-}

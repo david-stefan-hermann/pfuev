@@ -1,37 +1,31 @@
 'use client'
 
 import React from 'react'
-import {
-    Box,
-    IconButton,
-    useBreakpointValue,
-    Stack,
-    Heading,
-    Text,
-    Container,
-    Flex,
-    Wrap,
-    Button,
-    Center,
-    Link,
-} from '@chakra-ui/react'
-// Here we have used react-icons package for the icons
+import { Box, IconButton, useBreakpointValue, Stack, Heading, Text, Container, Flex, Wrap, Button, Center, Link } from '@chakra-ui/react'
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md";
-// And react-slick as our Carousel Lib
 import Slider from 'react-slick'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 
-// Settings for the slider
-const settings = {
-    dots: true,
-    arrows: false,
-    fade: true,
-    infinite: true,
-    autoplay: true,
-    speed: 500,
-    autoplaySpeed: 5000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+interface CardLink {
+    cardLink: string
+}
+
+interface CarouselCardContent {
+    title: string
+    text: string
+    image: string
+    author: string
+    attribution: string
+    link: string
+}
+
+interface HeroCarouselProps {
+    index: number
+    card: CarouselCardContent
+}
+
+interface SliderButtonsProps {
+    slider: Slider | null
 }
 
 const HeroCarousel: React.FC = () => {
@@ -42,35 +36,6 @@ const HeroCarousel: React.FC = () => {
 
     // Slider Height
     const sliderHeight = useBreakpointValue({ base: '60', md: '2xl' })
-
-    // This list contains all the data for carousels
-    // This can be static or loaded from a server
-    const cards = [
-        {
-            title: 'Wissenschaftliche Expertise',
-            text: "Unsere Experten nutzen neueste wissenschaftliche Erkenntnisse, um die Gesundheit Ihrer Pferde zu verbessern.",
-            image: '/hero/1.jpg',
-            author: 'Johannes Plenio',
-            attribution: 'https://www.pexels.com/de-de/foto/silhouette-der-person-die-ein-pferd-reitet-1125774/',
-            link: ''
-        },
-        {
-            title: 'Vertrauen und Transparenz',
-            text: "Wir setzen auf klare Kommunikation und transparente Prozesse für Ihr Vertrauen.",
-            image: '/hero/2.jpg',
-            author: "Mali Maeder",
-            attribution: "https://www.pexels.com/de-de/foto/schwarzes-pferd-das-auf-grunem-feld-lauft-das-mit-baumen-umgeben-ist-101667/",
-            link: '#kundenbewertungen'
-        },
-        {
-            title: 'Nachhaltigkeit und Verantwortung',
-            text: " Wir fördern umweltfreundliche Methoden und nachhaltige Pferdehaltung.",
-            image: '/hero/3.jpg',
-            author: "Brenda Timmermans",
-            attribution: "https://www.pexels.com/de-de/foto/weisses-pferd-nahe-heuhaufen-wahrend-des-tages-58875/",
-            link: ''
-        },
-    ]
 
     return (
         <>
@@ -89,8 +54,8 @@ const HeroCarousel: React.FC = () => {
                 {/* Desktop Slider */}
                 <Flex display={{ base: 'none', md: 'block' }}>
                     {SliderButtons({ slider: desktopSlider })}
-                    <Slider {...settings} ref={(desktopSlider) => setDesktopSlider(desktopSlider)}>
-                        {cards.map((card, index) => (
+                    <Slider {...SETTINGS} ref={(desktopSlider) => setDesktopSlider(desktopSlider)}>
+                        {CARDS_DATA.map((card, index) => (
                             DesktopHeroCarousel({ index, card }, sliderHeight)
                         ))}
                     </Slider>
@@ -98,8 +63,8 @@ const HeroCarousel: React.FC = () => {
                 {/* Mobile Slider */}
                 <Flex display={{ base: 'block', md: 'none' }}>
                     {SliderButtons({ slider: mobileSlider })}
-                    <Slider {...settings} ref={(mobileSlider) => setMobileSlider(mobileSlider)}>
-                        {cards.map((card, index) => (
+                    <Slider {...SETTINGS} ref={(mobileSlider) => setMobileSlider(mobileSlider)}>
+                        {CARDS_DATA.map((card, index) => (
                             MobileHeroCarousel({ index, card }, sliderHeight)
                         ))}
                     </Slider>
@@ -112,6 +77,7 @@ const HeroCarousel: React.FC = () => {
 }
 
 export default HeroCarousel
+
 
 const SliderButtons: React.FC<SliderButtonsProps> = ({ slider }) => {
     // These are the breakpoints which changes the position of the
@@ -169,29 +135,7 @@ const Buttons: React.FC<CardLink> = ({ cardLink }) => {
     )
 }
 
-interface SliderButtonsProps {
-    slider: Slider | null
-}
-
-interface CardLink {
-    cardLink: string
-}
-
-interface CarouselCardContent {
-    title: string
-    text: string
-    image: string
-    author: string
-    attribution: string
-    link: string
-}
-
-interface CarouselCard {
-    index: number
-    card: CarouselCardContent
-}
-
-const MobileHeroCarousel: React.FC<CarouselCard> = ({ index, card }, height: string) => {
+const MobileHeroCarousel: React.FC<HeroCarouselProps> = ({ index, card }, height: string) => {
     return (
         <React.Fragment key={index}>
             <Box
@@ -254,7 +198,7 @@ const MobileHeroCarousel: React.FC<CarouselCard> = ({ index, card }, height: str
     )
 }
 
-const DesktopHeroCarousel: React.FC<CarouselCard> = ({ index, card }, height: string) => {
+const DesktopHeroCarousel: React.FC<HeroCarouselProps> = ({ index, card }, height: string) => {
     return (
         <Box
             key={index}
@@ -303,3 +247,44 @@ const DesktopHeroCarousel: React.FC<CarouselCard> = ({ index, card }, height: st
         </Box>
     )
 }
+
+// Settings for the slider
+const SETTINGS = {
+    dots: true,
+    arrows: false,
+    fade: true,
+    infinite: true,
+    autoplay: true,
+    speed: 500,
+    autoplaySpeed: 5000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+}
+
+// This list contains all the data for carousels
+const CARDS_DATA = [
+    {
+        title: 'Wissenschaftliche Expertise',
+        text: "Unsere Experten nutzen neueste wissenschaftliche Erkenntnisse, um die Gesundheit Ihrer Pferde zu verbessern.",
+        image: '/hero/1.jpg',
+        author: 'Johannes Plenio',
+        attribution: 'https://www.pexels.com/de-de/foto/silhouette-der-person-die-ein-pferd-reitet-1125774/',
+        link: ''
+    },
+    {
+        title: 'Vertrauen und Transparenz',
+        text: "Wir setzen auf klare Kommunikation und transparente Prozesse für Ihr Vertrauen.",
+        image: '/hero/2.jpg',
+        author: "Mali Maeder",
+        attribution: "https://www.pexels.com/de-de/foto/schwarzes-pferd-das-auf-grunem-feld-lauft-das-mit-baumen-umgeben-ist-101667/",
+        link: '#kundenbewertungen'
+    },
+    {
+        title: 'Nachhaltigkeit und Verantwortung',
+        text: " Wir fördern umweltfreundliche Methoden und nachhaltige Pferdehaltung.",
+        image: '/hero/3.jpg',
+        author: "Brenda Timmermans",
+        attribution: "https://www.pexels.com/de-de/foto/weisses-pferd-nahe-heuhaufen-wahrend-des-tages-58875/",
+        link: ''
+    },
+]

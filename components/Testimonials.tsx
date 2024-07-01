@@ -1,20 +1,18 @@
 'use client'
 
 import { ExternalLinkIcon } from '@chakra-ui/icons'
-import {
-    Box,
-    Flex,
-    Heading,
-    Text,
-    Stack,
-    Avatar,
-    useColorModeValue,
-    Link,
-} from '@chakra-ui/react'
+import { Box, Flex, Heading, Text, Stack, Avatar, useColorModeValue, Link } from '@chakra-ui/react'
 import { DefaultSection } from '@/components'
 
 interface Props {
     children: React.ReactNode
+}
+
+interface TestimonialAvatarProps {
+    src: string
+    link: string
+    name: string
+    title: string
 }
 
 const Testimonial: React.FC<Props> = (props) => {
@@ -77,14 +75,6 @@ const TestimonialText: React.FC<Props> = (props) => {
     )
 }
 
-interface TestimonialAvatarProps {
-    src: string
-    link: string
-    name: string
-    title: string
-}
-
-
 const TestimonialAvatar: React.FC<TestimonialAvatarProps> = ({ src, link, name, title }) => {
     return (
         <Flex align='center' mt={8} direction='column'>
@@ -102,58 +92,63 @@ const TestimonialAvatar: React.FC<TestimonialAvatarProps> = ({ src, link, name, 
 const Testimonials: React.FC = () => {
     return (
         <DefaultSection
-            title='Was unsere Kundschaft sagt'
-            subtitle='Erfahrungsberichte von unseren zufriedenen Kunden und Kundinnen'
+            title={TESTIMONIALS_TITLE.title}
+            subtitle={TESTIMONIALS_TITLE.subtitle}
             bg={true}
         >
             <Stack
                 direction={{ base: 'column', md: 'row' }}
                 spacing={{ base: 10, md: 4, lg: 10 }}>
-                <Testimonial>
-                    <TestimonialContent>
-                        <TestimonialHeading>Vertrauensvolle Partnerschaft</TestimonialHeading>
-                        <TestimonialText>
-                            Ich schätze die Transparenz und das Vertrauen, das der PFÜV bietet. Sie sind meine erste Wahl für alle Gesundheitsfragen meiner Pferde.
-                        </TestimonialText>
-                    </TestimonialContent>
-                    <TestimonialAvatar
-                        src='/testimonials/1.jpg'
-                        link='https://www.pexels.com/de-de/foto/mann-der-cowboyhut-tragt-2250519/'
-                        name='Thomas Becker'
-                        title='Pferdetrainer und Cowboy'
-                    />
-                </Testimonial>
-                <Testimonial>
-                    <TestimonialContent>
-                        <TestimonialHeading>Hervorragender Service und Fachwissen</TestimonialHeading>
-                        <TestimonialText>
-                            Der PFÜV hat mit seinem fundierten Fachwissen meine Pferde in Topform gebracht. Die Gesundheit meiner Tiere war noch nie besser!
-                        </TestimonialText>
-                    </TestimonialContent>
-                    <TestimonialAvatar
-                        src='/testimonials/2.jpg'
-                        link='https://www.pexels.com/de-de/foto/vorbereitung-festhalten-halten-pferd-7882376/'
-                        name='Anna Müller'
-                        title='Pferdebesitzerin und Züchterin'
-                    />
-                </Testimonial>
-                <Testimonial>
-                    <TestimonialContent>
-                        <TestimonialHeading>Nachhaltigkeit an erster Stelle</TestimonialHeading>
-                        <TestimonialText>
-                            Der PFÜV setzt auf nachhaltige Methoden und verantwortungsvolle Pferdehaltung. Das überzeugt mich voll und ganz!
-                        </TestimonialText>
-                    </TestimonialContent>
-                    <TestimonialAvatar
-                        src='/testimonials/3.jpg'
-                        link='https://www.pexels.com/de-de/foto/schnee-natur-frau-romantisch-7787638/'
-                        name='Maria Schneider'
-                        title='Reitstallbesitzerin'
-                    />
-                </Testimonial>
+                {TESTIMONIAL_DATA.map((testimonial, index) => (
+                    <Testimonial key={index}>
+                        <TestimonialContent>
+                            <TestimonialHeading>{testimonial.title}</TestimonialHeading>
+                            <TestimonialText>{testimonial.text}</TestimonialText>
+                        </TestimonialContent>
+                        <TestimonialAvatar {...testimonial.avatar} />
+                    </Testimonial>
+                ))}
             </Stack>
         </DefaultSection>
     )
 }
 
 export default Testimonials
+
+const TESTIMONIALS_TITLE = {
+    title: 'Was unsere Kundschaft sagt',
+    subtitle: 'Erfahrungsberichte von unseren zufriedenen Kunden und Kundinnen'
+}
+
+const TESTIMONIAL_DATA = [
+    {
+        title: 'Vertrauensvolle Partnerschaft',
+        text: 'Ich schätze die Transparenz und das Vertrauen, das der PFÜV bietet. Sie sind meine erste Wahl für alle Gesundheitsfragen meiner Pferde.',
+        avatar: {
+            src: '/testimonials/1.jpg',
+            name: 'Thomas Becker',
+            title: 'Pferdetrainer und Cowboy',
+            link: 'https://www.pexels.com/de-de/foto/mann-der-cowboyhut-tragt-2250519/'
+        }
+    },
+    {
+        title: 'Hervorragender Service und Fachwissen',
+        text: 'Der PFÜV hat mit seinem fundierten Fachwissen meine Pferde in Topform gebracht. Die Gesundheit meiner Tiere war noch nie besser!',
+        avatar: {
+            src: '/testimonials/2.jpg',
+            name: 'Anna Müller',
+            title: 'Pferdebesitzerin und Züchterin',
+            link: 'https://www.pexels.com/de-de/foto/vorbereitung-festhalten-halten-pferd-7882376/'
+        }
+    },
+    {
+        title: 'Nachhaltigkeit an erster Stelle',
+        text: 'Der PFÜV setzt auf nachhaltige Methoden und verantwortungsvolle Pferdehaltung. Das überzeugt mich voll und ganz!',
+        avatar: {
+            src: '/testimonials/3.jpg',
+            name: 'Maria Schneider',
+            title: 'Reitstallbesitzerin',
+            link: 'https://www.pexels.com/de-de/foto/schnee-natur-frau-romantisch-7787638/'
+        }
+    },
+]

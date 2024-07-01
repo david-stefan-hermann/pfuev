@@ -1,27 +1,14 @@
 'use client'
 
-import {
-    Box,
-    Flex,
-    Text,
-    IconButton,
-    Stack,
-    Collapse,
-    Icon,
-    Image,
-    Popover,
-    PopoverTrigger,
-    PopoverContent,
-    useColorModeValue,
-    useDisclosure,
-    Link,
-} from '@chakra-ui/react'
-import {
-    HamburgerIcon,
-    CloseIcon,
-    ChevronDownIcon,
-    ChevronRightIcon,
-} from '@chakra-ui/icons'
+import { Box, Flex, Text, IconButton, Stack, Collapse, Icon, Image, Popover, PopoverTrigger, PopoverContent, useColorModeValue, useDisclosure, Link } from '@chakra-ui/react'
+import { HamburgerIcon, CloseIcon, ChevronDownIcon, ChevronRightIcon } from '@chakra-ui/icons'
+
+interface NavItem {
+    label: string
+    subLabel?: string
+    children?: Array<NavItem>
+    href?: string
+}
 
 const Navbar: React.FC = () => {
     const { isOpen, onToggle } = useDisclosure()
@@ -150,6 +137,16 @@ const DesktopNav: React.FC = () => {
     )
 }
 
+const MobileNav: React.FC = () => {
+    return (
+        <Stack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
+            {NAV_ITEMS.map((navItem) => (
+                <MobileNavItem key={navItem.label} {...navItem} />
+            ))}
+        </Stack>
+    )
+}
+
 const DesktopSubNav: React.FC<NavItem> = ({ label, href, subLabel }) => {
     return (
         <Box
@@ -182,16 +179,6 @@ const DesktopSubNav: React.FC<NavItem> = ({ label, href, subLabel }) => {
                 </Flex>
             </Stack>
         </Box>
-    )
-}
-
-const MobileNav: React.FC = () => {
-    return (
-        <Stack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
-            {NAV_ITEMS.map((navItem) => (
-                <MobileNavItem key={navItem.label} {...navItem} />
-            ))}
-        </Stack>
     )
 }
 
@@ -241,13 +228,6 @@ const MobileNavItem: React.FC<NavItem> = ({ label, children, href }) => {
             </Collapse>
         </Stack>
     )
-}
-
-interface NavItem {
-    label: string
-    subLabel?: string
-    children?: Array<NavItem>
-    href?: string
 }
 
 const NAV_ITEMS: Array<NavItem> = [

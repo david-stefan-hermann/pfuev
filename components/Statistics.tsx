@@ -1,19 +1,7 @@
 'use client'
 
-import {
-    Box,
-    Flex,
-    SimpleGrid,
-    Stat,
-    StatLabel,
-    StatNumber,
-    useColorModeValue,
-} from '@chakra-ui/react'
-import {
-    PiHorseLight,
-    PiMaskHappyLight,
-    PiGlobeHemisphereWestLight
-} from "react-icons/pi"
+import { Box, Flex, SimpleGrid, Stat, StatLabel, StatNumber, useColorModeValue } from '@chakra-ui/react'
+import { PiHorseLight, PiMaskHappyLight, PiGlobeHemisphereWestLight } from "react-icons/pi"
 import { DefaultSection } from '@/components'
 
 interface StatsCardProps {
@@ -51,20 +39,48 @@ const StatsCard: React.FC<StatsCardProps> = (props) => {
         </Stat>
     )
 }
+
 const BasicStatistics: React.FC = () => {
     return (
         <DefaultSection
-            title='Was wir vorzeigen können'
-            subtitle='Wir sind stolz darauf, die Nummer 1 in der DACH-Region zu sein!'
+            title={STATS_TITLE.title}
+            subtitle={STATS_TITLE.subtitle}
             bg={false}
         >
             <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
-                <StatsCard title='Wir prüfen pro Jahr' stat='50.000 Pferde' icon={<PiHorseLight size='3em' />} />
-                <StatsCard title='Arbeiten in' stat='3 verschiedenen Ländern' icon={<PiGlobeHemisphereWestLight size='3em' />} />
-                <StatsCard title='Mit einer Kundenzufriedenheit von' stat='69% +' icon={<PiMaskHappyLight size='3em' />} />
+                {STATS_DATA.map((stat, index) => (
+                    <StatsCard
+                        key={index}
+                        title={stat.title}
+                        stat={stat.stat}
+                        icon={stat.icon}/>
+                ))}
             </SimpleGrid>
         </DefaultSection>
     )
 }
 
 export default BasicStatistics
+
+const STATS_TITLE = {
+    title: 'Was wir vorzeigen können',
+    subtitle: 'Wir sind stolz darauf, die Nummer 1 in der DACH-Region zu sein!'
+}
+
+const STATS_DATA = [
+    {
+        title: 'Wir prüfen pro Jahr',
+        stat: '50.000 Pferde',
+        icon: <PiHorseLight size='3em' />
+    },
+    {
+        title: 'Arbeiten in',
+        stat: '3 verschiedenen Ländern',
+        icon: <PiGlobeHemisphereWestLight size='3em' />
+    },
+    {
+        title: 'Mit einer Kundenzufriedenheit von',
+        stat: '69% +',
+        icon: <PiMaskHappyLight size='3em' />
+    }
+]
