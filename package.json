@@ -22,6 +22,7 @@
     "react-dom": "^18",
     "react-icons": "^5.2.1",
     "react-slick": "^0.30.2",
+    "resend": "^3.4.0",
     "wrangler": "^3.62.0"
   },
   "devDependencies": {
