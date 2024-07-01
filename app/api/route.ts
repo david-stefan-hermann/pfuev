@@ -1,14 +1,10 @@
 import { Resend } from 'resend'
 
-interface Env {
-    RESEND_API_KEY: string
-}
-
-export async function POST(request: Request, env: Env) {
+export async function POST(request: Request) {
     
     const { name, email, message } = await request.json()
 
-    const env_resend_api_key = env.RESEND_API_KEY || 'x-undefined-key'
+    const env_resend_api_key = process.env.RESEND_API_KEY || 'x-undefined-key'
     console.log(env_resend_api_key)
 
     const resend = new Resend(env_resend_api_key)

@@ -3,4 +3,4 @@ name = "pfuev"
 compatibility_flags = ["nodejs_compat"]
 
 [vars]
-RESEND_API_KEY = "x-vars"
+RESEND_API_KEY="x-vars"
