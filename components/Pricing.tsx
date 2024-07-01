@@ -34,7 +34,7 @@ const PriceWrapper: React.FC<Props> = (item) => {
             borderWidth="1px"
             alignSelf={{ base: 'center', lg: 'flex-start' }}
             borderColor={useColorModeValue('gray.200', 'gray.500')}
-            borderRadius={'xl'}>
+            borderRadius='xl'>
             <Box py={4} px={12}>
                 <Text fontWeight="500" fontSize="2xl">
                     {item.title}
@@ -54,7 +54,7 @@ const PriceWrapper: React.FC<Props> = (item) => {
             <VStack
                 bg={useColorModeValue('gray.50', 'gray.700')}
                 py={4}
-                borderBottomRadius={'xl'}>
+                borderBottomRadius='xl'>
                 <List spacing={3} textAlign="start" px={12}>
                     {item.features.map((feature, index) => (
                         <ListItem key={index}>
@@ -78,11 +78,11 @@ const PriceWrapper: React.FC<Props> = (item) => {
 
 const Pricing: React.FC = () => {
     return (
-        <Container maxW={'7xl'} py={16} as={Stack} spacing={12}>
-            <Center w={"full"} textAlign={"center"}>
+        <Container maxW='7xl' py={16} as={Stack} spacing={12}>
+            <Center w="full" textAlign="center">
                 <VStack spacing={2}>
                     <Heading>Preise nach Ihren Bedürfnissen</Heading>
-                    <Text fontSize="lg" color={'gray.500'}>
+                    <Text fontSize="lg" color='gray.500'>
                         Besuchen Sie uns vor Ort und wählen Sie das für Sie passende Angebot aus.
                     </Text>
                 </VStack>

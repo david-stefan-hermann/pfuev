@@ -74,7 +74,7 @@ const HeroCarousel: React.FC = () => {
 
     return (
         <>
-            <Box position={'relative'} height={sliderHeight} width={'full'} mb={10}>
+            <Box position='relative' height={sliderHeight} width='full' mb={10}>
                 {/* CSS files for react-slick */}
                 <link
                     rel="stylesheet"
@@ -123,27 +123,27 @@ const SliderButtons: React.FC<SliderButtonsProps> = ({ slider }) => {
     return (
         <>
             <IconButton
-                colorScheme={"blue"}
+                colorScheme="blue"
                 zIndex={2}
                 aria-label="left-arrow"
                 variant={sliderButtonVariant}
                 position="absolute"
                 left={side}
                 top={top}
-                transform={'translate(0%, -50%)'}
+                transform='translate(0%, -50%)'
                 onClick={() => slider?.slickPrev()}>
                 <MdOutlineKeyboardArrowLeft size="40px" />
             </IconButton>
             {/* Right Icon */}
             <IconButton
-                colorScheme={"blue"}
+                colorScheme="blue"
                 zIndex={2}
                 aria-label="right-arrow"
                 variant={sliderButtonVariant}
                 position="absolute"
                 right={side}
                 top={top}
-                transform={'translate(0%, -50%)'}
+                transform='translate(0%, -50%)'
                 onClick={() => slider?.slickNext()}>
                 <MdOutlineKeyboardArrowRight size="40px" />
             </IconButton>
@@ -154,12 +154,12 @@ const SliderButtons: React.FC<SliderButtonsProps> = ({ slider }) => {
 const Buttons: React.FC<CardLink> = ({ cardLink }) => {
     return (
         <>
-            <Button rounded={'full'} colorScheme="blue" variant="solid" size="lg" as="a" href="/#pfuev">
+            <Button rounded='full' colorScheme="blue" variant="solid" size="lg" as="a" href="/#pfuev">
                 Über uns
             </Button>
             {
                 cardLink &&
-                <Button rounded={'full'} variant="solid" size="lg" as="a" href={cardLink}>
+                <Button rounded='full' variant="solid" size="lg" as="a" href={cardLink}>
                     weiterlesen
                 </Button>
             }
@@ -216,13 +216,13 @@ const MobileHeroCarousel: React.FC<CarouselCard> = ({ index, card }, height: str
                 <Container size="container.lg" height={height} position="relative" >
                     <Stack
                         spacing={6}
-                        w={'90%'}
-                        maxW={'lg'}
+                        w='90%'
+                        maxW='lg'
                         position="absolute"
                         top="50%"
                         transform="translate(0, -50%)"
                         zIndex="overlay"
-                        textAlign={'center'}>
+                        textAlign='center'>
                         <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }} color="White">
                             {card.title}
                         </Heading>
@@ -239,7 +239,7 @@ const MobileHeroCarousel: React.FC<CarouselCard> = ({ index, card }, height: str
                     px={4}
                     py={4}
                     textAlign="center"
-                    maxW={'lg'}>
+                    maxW='lg'>
                     <Text fontSize={{ base: 'md', lg: 'lg' }} color="DarkText">
                         {card.text}
                     </Text>
@@ -258,7 +258,7 @@ const DesktopHeroCarousel: React.FC<CarouselCard> = ({ index, card }, height: st
             key={index}
             height={height}
             position="relative"
-            bgColor={"blue"}
+            bgColor="blue"
             backgroundPosition="center left"
             backgroundRepeat="no-repeat"
             backgroundSize="cover"
@@ -281,8 +281,8 @@ const DesktopHeroCarousel: React.FC<CarouselCard> = ({ index, card }, height: st
             <Container size="container.lg" height={height} position="relative" >
                 <Stack
                     spacing={6}
-                    w={'full'}
-                    maxW={'lg'}
+                    w='full'
+                    maxW='lg'
                     position="absolute"
                     top="50%"
                     transform="translate(0, -50%)"

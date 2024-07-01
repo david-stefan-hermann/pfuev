@@ -4,12 +4,12 @@ import { Box, Center, Container, Heading, ListItem, OrderedList, Stack, Text, VS
 
 const Contact: React.FC = () => {
     return (
-        <Container maxW={'full'} as={Stack} p={0} bg={useColorModeValue('gray.100', 'gray.700')}>
-            <Container maxW={'7xl'} as={Stack} spacing={12} py={16} textAlign={"center"}>
-                <Center w={"full"} textAlign={"center"}>
+        <Container maxW='full' as={Stack} p={0} bg={useColorModeValue('gray.100', 'gray.700')}>
+            <Container maxW='7xl' as={Stack} spacing={12} py={16} textAlign="center">
+                <Center w="full" textAlign="center">
                     <VStack spacing={2}>
                         <Heading>Kontakt</Heading>
-                        <Text fontSize="lg" color={'gray.500'}>
+                        <Text fontSize="lg" color='gray.500'>
                             Kontaktieren Sie den Gott des PFÜV für Segen und Schutz für Ihre Pferde.
                         </Text>
                     </VStack>
@@ -17,11 +17,11 @@ const Contact: React.FC = () => {
                 <Center>
                     <Box
                         maxW={{ base: 'full', md: 'xl' }}
-                        w={'full'}
+                        w='full'
                         borderWidth="1px"
                         borderRadius="lg"
                         overflow="hidden"
-                        bg={"white"}
+                        bg="white"
                         p={5}
                         py={7}>
                         <Box>
@@ -29,7 +29,7 @@ const Contact: React.FC = () => {
                                 <Heading>
                                     Anweisungen
                                 </Heading>
-                                <OrderedList textAlign={"left"} spacing={3}>
+                                <OrderedList textAlign="left" spacing={3}>
                                     <ListItem>
                                         Gehen Sie an einen ruhigen Ort, an dem Sie ungestört sind.
                                     </ListItem>
