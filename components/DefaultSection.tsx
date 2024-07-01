@@ -8,9 +8,10 @@ interface DefaultSectionProps {
 }
 
 const DefaultSection: React.FC<DefaultSectionProps> = (props) => {
-    const bg = props.bg ? useColorModeValue('gray.100', 'gray.700') : ''
+    const bg = useColorModeValue('gray.100', 'gray.700')
+    const conditionalBg = props.bg ? bg : ''
     return (
-        <Box bg={bg}>
+        <Box bg={conditionalBg}>
             <Container maxW='7xl' py={10} as={Stack} spacing={12}>
                 {(props.title || props.subtitle) && <Center w="full" textAlign="center">
                     <VStack spacing={2}>
