@@ -62,12 +62,12 @@ const Navbar: React.FC = () => {
                     </Flex>
                 </Flex>
 
-                { /* <Stack
+                <Stack
                     flex={{ base: 1, md: 0 }}
                     justify={'flex-end'}
                     direction={'row'}
                     spacing={6}>
-                    <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} href={'#'}>
+                    { /* <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} href={'#'}>
                         Sign In
                     </Button>
                     <Button
@@ -82,8 +82,8 @@ const Navbar: React.FC = () => {
                             bg: 'pink.300',
                         }}>
                         Sign Up
-                    </Button>
-                </Stack> */ }
+                    </Button> */ }
+                </Stack>
             </Flex>
 
             <Collapse in={isOpen} animateOpacity>
