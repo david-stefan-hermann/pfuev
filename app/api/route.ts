@@ -11,7 +11,6 @@ export async function POST(request: Request, env: { RESEND_API_KEY: string }) {
         subject: 'Pfuev.org: Neue Nachricht von ' + name || 'Unbekannt',
         html: message || 'Keine Nachricht',
     })
-    console.log(env.RESEND_API_KEY)
     return Response.json({ data, error })
 }
 
