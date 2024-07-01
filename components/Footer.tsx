@@ -9,14 +9,17 @@ import {
     useColorModeValue,
     VisuallyHidden,
     Image,
-    Heading
+    Heading,
+    Link
 } from '@chakra-ui/react'
 import { ReactNode } from 'react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 
 const Logo: React.FC = () => {
     return (
-        <Image src="/logo.png" height="20" alt="Pfüv Logo" />
+        <Link href='/'>
+            <Image src="/logo.png" height="20" alt="Pfüv Logo"/>
+        </Link>
     )
 }
 
