@@ -37,8 +37,8 @@ const settings = {
 const HeroCarousel: React.FC = () => {
     // As we have used custom buttons, we need a reference variable to
     // change the state
-    const [slider, setSlider] = React.useState<Slider | null>(null)
-
+    const [mobileSlider, setMobileSlider] = React.useState<Slider | null>(null)
+    const [desktopSlider, setDesktopSlider] = React.useState<Slider | null>(null)
 
     // Slider Height
     const sliderHeight = useBreakpointValue({ base: '60', md: '2xl' })
@@ -86,17 +86,19 @@ const HeroCarousel: React.FC = () => {
                     type="text/css"
                     href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
                 />
-                {SliderButtons({ slider })}
-                {/* Slider */}
+                {/* Desktop Slider */}
                 <Flex display={{ base: 'none', md: 'block' }}>
-                    <Slider {...settings} ref={(slider) => setSlider(slider)}>
+                    {SliderButtons({ slider: desktopSlider })}
+                    <Slider {...settings} ref={(desktopSlider) => setDesktopSlider(desktopSlider)}>
                         {cards.map((card, index) => (
                             DesktopHeroCarousel({ index, card }, sliderHeight)
                         ))}
                     </Slider>
                 </Flex>
+                {/* Mobile Slider */}
                 <Flex display={{ base: 'block', md: 'none' }}>
-                    <Slider {...settings} ref={(slider) => setSlider(slider)}>
+                    {SliderButtons({ slider: mobileSlider })}
+                    <Slider {...settings} ref={(mobileSlider) => setMobileSlider(mobileSlider)}>
                         {cards.map((card, index) => (
                             MobileHeroCarousel({ index, card }, sliderHeight)
                         ))}

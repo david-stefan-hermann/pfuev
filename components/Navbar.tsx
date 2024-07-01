@@ -5,7 +5,6 @@ import {
     Flex,
     Text,
     IconButton,
-    Button,
     Stack,
     Collapse,
     Icon,
@@ -15,6 +14,7 @@ import {
     PopoverContent,
     useColorModeValue,
     useDisclosure,
+    Link,
 } from '@chakra-ui/react'
 import {
     HamburgerIcon,
@@ -50,13 +50,14 @@ const Navbar: React.FC = () => {
                     />
                 </Flex>
                 <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-                    <Image
-                        src="/logo.png"
-                        alt="Logo"
-                        width={70}
-                        height={70}
-                    />
-
+                    <Link href='/'>
+                        <Image
+                            src="/logo.png"
+                            alt="Logo"
+                            width={70}
+                            height={70}
+                        />
+                    </Link>
                     <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
                         <DesktopNav />
                     </Flex>
