@@ -52,7 +52,7 @@ const HeroCarousel: React.FC = () => {
             image: '/hero/1.jpg',
             author: 'Johannes Plenio',
             attribution: 'https://www.pexels.com/de-de/foto/silhouette-der-person-die-ein-pferd-reitet-1125774/',
-            link: '#'
+            link: ''
         },
         {
             title: 'Vertrauen und Transparenz',
@@ -68,7 +68,7 @@ const HeroCarousel: React.FC = () => {
             image: '/hero/3.jpg',
             author: "Brenda Timmermans",
             attribution: "https://www.pexels.com/de-de/foto/weisses-pferd-nahe-heuhaufen-wahrend-des-tages-58875/",
-            link: '#'
+            link: ''
         },
     ]
 
@@ -157,9 +157,12 @@ const Buttons: React.FC<CardLink> = ({ cardLink }) => {
             <Button rounded={'full'} colorScheme="blue" variant="solid" size="lg" as="a" href="/#pfuev">
                 Über uns
             </Button>
-            <Button rounded={'full'} variant="solid" size="lg" as="a" href={cardLink}>
-                weiterlesen
-            </Button>
+            {
+                cardLink &&
+                <Button rounded={'full'} variant="solid" size="lg" as="a" href={cardLink}>
+                    weiterlesen
+                </Button>
+            }
         </>
     )
 }
