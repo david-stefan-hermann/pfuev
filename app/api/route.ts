@@ -14,3 +14,5 @@ export async function POST(request: Request, env: { RESEND_API_KEY: string }) {
     console.log(env.RESEND_API_KEY)
     return Response.json({ data, error })
 }
+
+export const runtime = 'edge' // 'nodejs' (default) | 'edge'
