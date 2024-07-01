@@ -8,7 +8,8 @@ import {
     Text,
     useColorModeValue,
     VisuallyHidden,
-    Image
+    Image,
+    Heading
 } from '@chakra-ui/react'
 import { ReactNode } from 'react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
@@ -71,7 +72,46 @@ const Footer: React.FC = () => {
                     </Box>
                 </Stack>
             </Container>
-
+            <Container
+                as={Stack}
+                maxW='6xl'
+                borderTopWidth={1}
+                borderStyle='solid'
+                borderColor={useColorModeValue('gray.300', 'gray.700')}>
+                <Box
+                    display="flex"
+                    flexDirection={{ base: 'column', sm: 'row' }}
+                    justifyContent="space-between"
+                    pt={4}
+                    maxW='6xl'>
+                    <Box
+                        display="flex"
+                        flex="3"
+                        flexDirection="column"
+                        justifyContent="">
+                        <Heading size="md">Impressum</Heading>
+                        <Text fontStyle="italic">
+                            David Hermann
+                        </Text>
+                        <Text>
+                            12345 Pferdhausen
+                        </Text>
+                        <Text>
+                            Tel.: 01234 56789
+                        </Text>
+                        <Text>
+                            E-Mail: david.hermann@pfuev.org
+                        </Text>
+                    </Box>
+                    <Box
+                        display="flex"
+                        flex="1"
+                        flexDirection="column"
+                        justifyContent="center">
+                        <Image src="/footer/1.png" height="" alt="GF" />
+                    </Box>
+                </Box>
+            </Container>
             <Box
                 borderTopWidth={1}
                 borderStyle='solid'
