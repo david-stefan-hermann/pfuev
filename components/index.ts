@@ -10,6 +10,7 @@ import Services from "./Services"
 import SingleService from "./SingleService"
 import Contact from "./Contact"
 import Pricing from "./Pricing"
+import DefaultSection from "./DefaultSection"
 
 export {
     Navbar,
@@ -24,4 +25,5 @@ export {
     SingleService,
     Contact,
     Pricing,
+    DefaultSection,
 }

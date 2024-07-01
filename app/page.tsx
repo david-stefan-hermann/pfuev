@@ -9,7 +9,6 @@ const Home: React.FC = () => {
       <Hero />
       <HeaderSizedBox id="kundenbewertungen" />
       <Testimonials />
-      { /* <Statistics /> */ }
       <HeaderSizedBox id="dienstleistungen" />
       <Services />
       <HeaderSizedBox id="partner" />
@@ -18,6 +17,7 @@ const Home: React.FC = () => {
       <Pricing />
       <HeaderSizedBox id="kontakt" />
       <Contact />
+      <Statistics />
       <Footer />
     </main>
   )
