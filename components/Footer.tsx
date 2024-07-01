@@ -1,24 +1,18 @@
 'use client'
 
-import {
-    Box,
-    chakra,
-    Container,
-    Stack,
-    Text,
-    useColorModeValue,
-    VisuallyHidden,
-    Image,
-    Heading,
-    Link
-} from '@chakra-ui/react'
+import { Box, chakra, Container, Stack, Text, useColorModeValue, VisuallyHidden, Image, Heading, Link } from '@chakra-ui/react'
 import { ReactNode } from 'react'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { PiHorseLight } from 'react-icons/pi'
 
 const Logo: React.FC = () => {
     return (
         <Link href='/'>
-            <Image src="/logo.png" height="20" alt="Pfüv Logo"/>
+            <Image
+                src={FOOTER_DATA.image}
+                height="20"
+                alt="Pfüv Logo"
+                fallback={<PiHorseLight color='black' size="80%" />} />
         </Link>
     )
 }
@@ -92,26 +86,23 @@ const Footer: React.FC = () => {
                         flex="3"
                         flexDirection="column"
                         justifyContent="">
-                        <Heading size="md">Impressum</Heading>
-                        <Text fontStyle="italic">
-                            David Hermann
-                        </Text>
-                        <Text>
-                            12345 Pferdhausen
-                        </Text>
-                        <Text>
-                            Tel.: 01234 56789
-                        </Text>
-                        <Text>
-                            E-Mail: david.hermann@pfuev.org
-                        </Text>
+                        <Heading size="md">{FOOTER_DATA.imprint.title}</Heading>
+                        {FOOTER_DATA.imprint.data.map((item, index) => (
+                            <Text key={index}>
+                                {item}
+                            </Text>
+                        ))}
                     </Box>
                     <Box
                         display="flex"
                         flex="1"
                         flexDirection="column"
                         justifyContent="center">
-                        <Image src="/footer/1.png" height="" alt="GF" />
+                        <Image
+                            src={FOOTER_DATA.imprint.image}
+                            height=""
+                            alt="GF"
+                            fallback={<PiHorseLight color='black' size="80%" />} />
                     </Box>
                 </Box>
             </Container>
@@ -127,14 +118,13 @@ const Footer: React.FC = () => {
                     spacing={4}
                     justify={{ base: 'center', md: 'space-between' }}
                     align={{ base: 'center', md: 'center' }}>
-                    <Text>© 2024 PFÜV - Pferdischer Überwachungsverein</Text>
+                    <Text>{FOOTER_DATA.copyright}</Text>
                     <Stack direction='row' spacing={6}>
-                        <SocialButton label='Github' href='https://github.com/david-stefan-hermann'>
-                            <FaGithub />
-                        </SocialButton>
-                        <SocialButton label='LinkedIn' href='https://www.linkedin.com/in/david-hermann-cs/'>
-                            <FaLinkedin />
-                        </SocialButton>
+                        {FOOTER_DATA.social.map((item, index) => (
+                            <SocialButton key={index} label={item.href} href={item.href}>
+                                {item.icon}
+                            </SocialButton>
+                        ))}
                     </Stack>
                 </Container>
             </Box>
@@ -143,3 +133,46 @@ const Footer: React.FC = () => {
 }
 
 export default Footer
+
+const FOOTER_DATA = {
+    image: '/logo.png',
+    copyright: '© 2024 PFÜV - Pferdischer Überwachungsverein',
+    imprint: {
+        title: 'Impressum',
+        image: '/footer/1.png',
+        data: [
+            'David Hermann',
+            '12345 Pferdhausen',
+            'Tel.: 01234 56789',
+            'Email: info@pfuev.org'
+        ]
+    },
+    links: [
+        {
+            title: 'Home',
+            href: '/#'
+        },
+        {
+            title: 'Über uns',
+            href: '/#pfuev'
+        },
+        {
+            title: 'Unsere Partner',
+            href: '/#partner'
+        },
+        {
+            title: 'Kontakt',
+            href: '/#kontakt'
+        }
+    ],
+    social: [
+        {
+            icon: <FaGithub />,
+            href: 'https://github.com/david-stefan-hermann'
+        },
+        {
+            icon: <FaLinkedin />,
+            href: 'https://www.linkedin.com/in/david-hermann-cs/'
+        }
+    ],
+}

@@ -1,15 +1,7 @@
 'use client'
 
-import {
-    Box,
-    Button,
-    Flex,
-    Heading,
-    Image,
-    Stack,
-    Text,
-    useBreakpointValue,
-} from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Image, Stack, Text, useBreakpointValue } from '@chakra-ui/react'
+import { PiHorseLight } from 'react-icons/pi'
 
 const Hero: React.FC = () => {
     return (
@@ -30,15 +22,15 @@ const Hero: React.FC = () => {
                                 bg: 'blue.400',
                                 zIndex: -1,
                             }}>
-                            PFÜV
+                            {HERO_DATA.title}
                         </Text>
                         <br />{' '}
                         <Text color='blue.400' as='span'>
-                            Pferdischer Überwachungsverein
+                            {HERO_DATA.subtitle}
                         </Text>{' '}
                     </Heading>
                     <Text fontSize={{ base: 'md', lg: 'lg' }} color='gray.500'>
-                        Willkommen beim PFÜV, dem führenden Verein für die Überprüfung und Inspektion von Pferden. Wir sorgen dafür, dass Ihre Pferde stets in bester Verfassung sind.
+                        {HERO_DATA.description}
                     </Text>
                     <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
                         <Button
@@ -47,7 +39,7 @@ const Hero: React.FC = () => {
                             colorScheme='blue'
                             as="a"
                             href="#kontakt">
-                            Jetzt Kontaktieren
+                            {HERO_DATA.cta}
                         </Button>
                         <Button
                             rounded='full'
@@ -65,7 +57,8 @@ const Hero: React.FC = () => {
                         maxH="2xl"
                         alt='Login Image'
                         objectFit='contain'
-                        src='/hero/logo.png'
+                        src={HERO_DATA.image}
+                        fallback={<PiHorseLight color='black' size="80%" />}
                     />
                 </Box>
             </Flex>
@@ -74,3 +67,11 @@ const Hero: React.FC = () => {
 }
 
 export default Hero
+
+const HERO_DATA = {
+    title: 'PFÜV',
+    subtitle: 'Pferdischer Überwachungsverein',
+    description: 'Willkommen beim PFÜV, dem führenden Verein für die Überprüfung und Inspektion von Pferden. Wir sorgen dafür, dass Ihre Pferde stets in bester Verfassung sind.',
+    cta: 'Jetzt Kontaktieren',
+    image: '/hero/logo.png'
+}

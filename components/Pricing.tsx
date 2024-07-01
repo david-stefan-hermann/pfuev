@@ -1,17 +1,6 @@
 'use client'
 
-import {
-    Box,
-    Stack,
-    HStack,
-    Text,
-    VStack,
-    useColorModeValue,
-    List,
-    ListItem,
-    ListIcon,
-    Button,
-} from '@chakra-ui/react'
+import { Box, Stack, HStack, Text, VStack, useColorModeValue, List, ListItem, ListIcon, Button } from '@chakra-ui/react'
 import { FaCheckCircle } from 'react-icons/fa'
 import { DefaultSection } from '@/components'
 
@@ -77,8 +66,8 @@ const PriceWrapper: React.FC<Props> = (item) => {
 const Pricing: React.FC = () => {
     return (
         <DefaultSection
-            title='Preise nach Ihren Bedürfnissen'
-            subtitle='Besuchen Sie uns vor Ort und wählen Sie das für Sie passende Angebot aus.'
+            title={PRICING_TITLE.title}
+            subtitle={PRICING_TITLE.subtitle}
         >
             <Stack
                 direction={{ base: 'column', md: 'row' }}
@@ -95,6 +84,11 @@ const Pricing: React.FC = () => {
 }
 
 export default Pricing
+
+const PRICING_TITLE = {
+    title: 'Preise nach Ihren Bedürfnissen',
+    subtitle: 'Besuchen Sie uns vor Ort und wählen Sie das für Sie passende Angebot aus.',
+}
 
 const PRICING_DATA = [
     {
