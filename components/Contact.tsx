@@ -13,14 +13,23 @@ const Contact: React.FC = () => {
     const [message, setMessage] = useState('')
 
     const [error, setError] = useState('')
+    const [success, setSuccess] = useState('')
 
     useEffect(() => {
         const timeout = setTimeout(() => {
             setError('')
-        }, 10000)
+        }, 5000)
 
         return () => clearTimeout(timeout)
     }, [error])
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setSuccess('')
+        }, 5000)
+
+        return () => clearTimeout(timeout)
+    }, [success])
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target
@@ -39,9 +48,20 @@ const Contact: React.FC = () => {
                 },
                 body: JSON.stringify({ name, email, message }),
             })
-            if (!response.ok) throw new Error('Network response was not ok')
+            // Check if the response from backend is ok
+            if (!response.ok) {
+                setError('Es gab ein Problem mit der Anfrage. Bitte versuchen Sie es später erneut.')
+                throw new Error('Network response was not ok')
+            }
+
+            // Parse the JSON response to see if there are any errors
+            const responseData = await response.json(); // Parse the JSON response
+            if (responseData.error) {
+                setError('Es gab ein Problem mit der Anfrage. Bitte versuchen Sie es später erneut.')
+                throw new Error(responseData.error)
+            }
             // Handle response here
-            console.log('Form submitted successfully')
+            console.log('Form submitted successfully', response.statusText)
             setError('Anfrage erfolgreich versendet!')
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error)
@@ -110,6 +130,9 @@ const Contact: React.FC = () => {
                         </Button>
                         {error && <Text fontSize="sm" color="red.500">
                             {error}
+                        </Text>}
+                        {success && <Text fontSize="sm" color="green.500">
+                            {success}
                         </Text>}
                         { /* <OrderedList textAlign="left" spacing={3}>
                             <ListItem>
