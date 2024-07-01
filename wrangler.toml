@@ -1,3 +1,9 @@
 name = "pfuev"
 
 compatibility_flags = ["nodejs_compat"]
+
+[env.staging.vars]
+RESEND_API_KEY = "x"
+
+[env.production.vars]
+RESEND_API_KEY = "x"

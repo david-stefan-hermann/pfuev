@@ -1,9 +1,13 @@
 import { Resend } from 'resend'
 
-export async function POST(request: Request, env: { RESEND_API_KEY: string }) {
+interface Env {
+    RESEND_API_KEY: string
+}
+
+export async function POST(request: Request, env: Env) {
     const { name, email, message } = await request.json()
 
-    const resend = new Resend(env.RESEND_API_KEY || "x")
+    const resend = new Resend(env.RESEND_API_KEY || 'x')
 
     const { data, error } = await resend.emails.send({
         from: 'info@pfuev.org',
