@@ -58,6 +58,7 @@ const Contact: React.FC = () => {
             const responseData = await response.json(); // Parse the JSON response
             if (responseData.error) {
                 setError('Es gab ein Problem mit der Anfrage. Bitte versuchen Sie es später erneut.')
+                console.error('Problem with key: ', responseData.key)
                 throw new Error(responseData.error)
             }
             // Handle response here

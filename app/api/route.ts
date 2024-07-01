@@ -5,10 +5,14 @@ interface Env {
 }
 
 export async function POST(request: Request, env: Env) {
+    
     const { name, email, message } = await request.json()
 
-    const resend = new Resend(env.RESEND_API_KEY || 'x')
+    const env_resend_api_key = env.RESEND_API_KEY || 'x-undefined-key'
+    console.log(env_resend_api_key)
 
+    const resend = new Resend(env_resend_api_key)
+    
     const { data, error } = await resend.emails.send({
         from: 'info@pfuev.org',
         to: 'info@pfuev.org',
@@ -21,7 +25,7 @@ export async function POST(request: Request, env: Env) {
         <p>Email: ${email || 'keine Email'}</p>`,
     })
     console.log(data, error)
-    return Response.json({ data, error })
+    return Response.json({ data, error, key: env_resend_api_key })
 }
 
 export const runtime = 'edge' // 'nodejs' (default) | 'edge'
