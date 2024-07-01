@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
             }
             // Handle response here
             console.log('Form submitted successfully', response.statusText)
-            setError('Anfrage erfolgreich versendet!')
+            setSuccess('Anfrage erfolgreich versendet!')
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error)
             setError('Es gab ein Problem mit der Anfrage. Bitte versuchen Sie es später erneut.')
