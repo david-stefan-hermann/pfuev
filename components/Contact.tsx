@@ -5,6 +5,7 @@ import { DefaultSection } from '@/components'
 import { MdOutlineEmail } from "react-icons/md"
 import { BsPerson } from "react-icons/bs"
 import { useEffect, useState } from "react"
+import { CheckCircleIcon } from "@chakra-ui/icons"
 
 const Contact: React.FC = () => {
 
@@ -24,6 +25,10 @@ const Contact: React.FC = () => {
     }, [error])
 
     useEffect(() => {
+        setName('')
+        setEmail('')
+        setMessage('')
+
         const timeout = setTimeout(() => {
             setSuccess('')
         }, 5000)
@@ -84,6 +89,7 @@ const Contact: React.FC = () => {
                     borderRadius="lg"
                     overflow="hidden"
                     bg="white"
+                    position="relative"
                     p={8}
                     py={7}>
                     <VStack spacing={5}>
@@ -96,7 +102,12 @@ const Contact: React.FC = () => {
                                 <InputLeftElement>
                                     <BsPerson />
                                 </InputLeftElement>
-                                <Input type="text" name="name" placeholder="Ihr Name" onChange={handleInputChange} />
+                                <Input
+                                    type="text"
+                                    name="name"
+                                    placeholder="Ihr Name"
+                                    value={name}
+                                    onChange={handleInputChange} />
                             </InputGroup>
                         </FormControl>
                         <FormControl isRequired>
@@ -105,7 +116,12 @@ const Contact: React.FC = () => {
                                 <InputLeftElement>
                                     <MdOutlineEmail />
                                 </InputLeftElement>
-                                <Input type="email" name="email" placeholder="Ihre Email-Adresse" onChange={handleInputChange} />
+                                <Input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Ihre Email-Adresse"
+                                    value={email}
+                                    onChange={handleInputChange} />
                             </InputGroup>
                         </FormControl>
                         <FormControl isRequired>
@@ -115,6 +131,7 @@ const Contact: React.FC = () => {
                                 placeholder="Ihr Anliegen"
                                 rows={8}
                                 resize="none"
+                                value={message}
                                 onChange={handleInputChange}
                             />
                         </FormControl>
@@ -132,9 +149,7 @@ const Contact: React.FC = () => {
                         {error && <Text fontSize="sm" color="red.500">
                             {error}
                         </Text>}
-                        {success && <Text fontSize="sm" color="green.500">
-                            {success}
-                        </Text>}
+                        { success && <SuccessMessage /> }
                     </VStack>
                 </Box>
             </Center>
@@ -143,3 +158,30 @@ const Contact: React.FC = () => {
 }
 
 export default Contact
+
+const SuccessMessage = () => {
+    return (
+        <Box
+            position="absolute"
+            top={0}
+            left={0}
+            right={0}
+            bottom={0}
+            bg="white"
+            p={2}
+            display='flex'
+            flexDirection='column'
+            justifyContent='center'
+            textAlign="center"
+        >
+            <Center>
+                <CheckCircleIcon boxSize={'50px'} color={'green.500'} />
+            </Center>
+            <Center>
+                <Heading size="lg" mt={6} mb={2}>
+                    Anfrage erfolgreich gesendet.
+                </Heading>
+            </Center>
+        </Box>
+    )
+}
