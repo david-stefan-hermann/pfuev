@@ -1,4 +1,4 @@
-import { HeroCarousel, HeaderSizedBox, Statistics, Testimonials, Hero, Partners, Services, Footer, Contact, Pricing } from "@/components"
+import { HeroCarousel, HeaderSizedBox, Statistics, Testimonials, Hero, Partners, Services, Footer, Contact, Pricing, FAQAccordion } from "@/components"
 
 const Home: React.FC = () => {
   return (
@@ -17,7 +17,9 @@ const Home: React.FC = () => {
       <Pricing />
       <HeaderSizedBox id="kontakt" />
       <Contact />
-      <Statistics />
+      { /* <Statistics /> */ }
+      <HeaderSizedBox id="FAQ" />
+      <FAQAccordion />
       <Footer />
     </main>
   )

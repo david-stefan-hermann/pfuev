@@ -10,6 +10,7 @@ import Services from "./Services"
 import SingleService from "./SingleService"
 import Contact from "./Contact"
 import Pricing from "./Pricing"
+import FAQAccordion from "./FAQ"
 import DefaultSection from "./DefaultSection"
 
 export {
@@ -25,5 +26,6 @@ export {
     SingleService,
     Contact,
     Pricing,
+    FAQAccordion,
     DefaultSection,
 }
