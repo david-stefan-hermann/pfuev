@@ -84,9 +84,9 @@ export default Partners
 const PARTNERS_TITLE = {
     title: 'Unsere Partner',
     subtitle: `Unsere Partnerorganisationen des PFÜV spielen eine entscheidende Rolle bei der Sicherstellung höchster
-        Standards in der Pferdegesundheit und - leistung.Jede regionale Organisation bringt ihre spezielle
+        Standards in der Pferdegesundheit und - leistung. Jede regionale Organisation bringt ihre spezielle
         Expertise ein und trägt zur kontinuierlichen Verbesserung und Weiterentwicklung unserer
-        Dienstleistungen bei.Gemeinsam mit unseren Partnern setzen wir Maßstäbe in der Pferdeinspektion und
+        Dienstleistungen bei. Gemeinsam mit unseren Partnern setzen wir Maßstäbe in der Pferdeinspektion und
         bieten ein umfassendes Netzwerk an Unterstützung und Innovation.`,
 }
 
