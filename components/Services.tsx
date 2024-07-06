@@ -33,7 +33,7 @@ const Feature: React.FC<FeatureProps> = ({ title, text, icon, link }) => {
             <Heading size="md" fontWeight={600}>{title}</Heading>
             <Text color='gray.600' textAlign="left" style={{ hyphens: "auto" }}>{text}</Text>
             <Flex>
-                <Button as="a" colorScheme="blue" variant="outline" rounded="full" href={link}>mehr erhfahren</Button>
+                <Button as="a" colorScheme="blue" variant="outline" rounded="full" href={link}>mehr erfahren</Button>
             </Flex>
         </Stack>
     )
