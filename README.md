@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PFÜV (Pferdischer Überwachungsverein) Website
+
+Welcome to the PFÜV (Pferdischer Überprüfungsverband) website project. This project is built using Next.js and Chakra UI to create a modern, responsive, and accessible web application for the PFÜV organization, which specializes in the health inspection and performance analysis of horses.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [License](#license)
+
+## Introduction
+
+The PFÜV website provides detailed information about the services offered by the PFÜV, including health checks, performance analyses, and certifications for horses. Users can learn about the organization, read customer reviews, and get in touch with the PFÜV through a contact form.
+
+## Technologies Used
+
+- **Next.js**: A React framework for server-side rendering, static site generation, and more.
+- **Chakra UI**: A simple, modular, and accessible component library for React.
+- **Cloudflare Pages**: for fast deployment of the Website directly from this Git repository.
+- **Resend**: An email delivery service used to send emails from the contact form.
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running, follow these simple steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Prerequisites
+
+- Node.js (v14.x or higher)
+- npm
+
+### Installation
+
+1. Clone the repo
+
+```
+git clone https://github.com/your-username/pfuev.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Install dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+cd pfuev
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Usage
 
-## Learn More
+### Running the Development Server
 
-To learn more about Next.js, take a look at the following resources:
+To start the development server, run:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Distributed under the MIT License.
