@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactElement } from 'react'
-import { Box, SimpleGrid, Icon, Text, Stack, Flex, Heading, Button, Center } from '@chakra-ui/react'
+import { Box, SimpleGrid, Icon, Text, Stack, Flex, Heading, Button, Center, Image } from '@chakra-ui/react'
 import { MdOutlineHealthAndSafety } from "react-icons/md"
 import { CgPerformance } from "react-icons/cg"
 import { GrCertificate } from "react-icons/gr"
@@ -10,24 +10,30 @@ import { DefaultSection } from '@/components'
 interface FeatureProps {
     title: string
     text: string
-    icon: ReactElement
+    icon: string
+    fallback: ReactElement
     link: string
 }
 
-const Feature: React.FC<FeatureProps> = ({ title, text, icon, link }) => {
+const Feature: React.FC<FeatureProps> = ({ title, text, icon, fallback, link }) => {
     return (
         <Stack>
             <Center>
                 <Flex
-                    w={16}
-                    h={16}
+                    w={28}
+                    h={28}
                     align='center'
                     justify='center'
                     color='white'
                     rounded='full'
-                    bg='gray.100'
                     mb={1}>
-                    {icon}
+                    {icon ? <Image
+                        src={icon}
+                        alt={title || "Icon"}
+                        fallback={fallback}
+                    />
+                        : icon
+                    }
                 </Flex>
             </Center>
             <Heading size="md" fontWeight={600}>{title}</Heading>
@@ -53,6 +59,7 @@ const Services: React.FC = () => {
                             title={service.title}
                             text={service.text}
                             icon={service.icon}
+                            fallback={service.fallback}
                             link={service.link}
                         />
                     ))}
@@ -75,7 +82,8 @@ const SERVICES_DATA = [
         text: `Unsere umfassenden Gesundheitschecks gewährleisten, dass Ihre Pferde stets in bester Verfassung sind.
             Wir führen gründliche Untersuchungen durch, um selbst kleinste Anomalien zu erkennen und zu behandeln.
             Vertrauen Sie auf unsere Expertise, um die Gesundheit und das Wohlbefinden Ihrer Pferde sicherzustellen.`,
-        icon: <Icon color="black" as={MdOutlineHealthAndSafety} w={10} h={10} />,
+        icon: "/services/health.png",
+        fallback: <Icon color="black" as={MdOutlineHealthAndSafety} w={10} h={10} />,
         link: "/dienstleistungen/#Gesundheitschecks"
     },
     {
@@ -84,7 +92,8 @@ const SERVICES_DATA = [
             präzise Messungen und individuelle Trainingspläne helfen wir Ihrem Pferd, seine maximale Leistungsfähigkeit
             zu erreichen und dabei elegant und effizient zu bleiben. Unser oberstes Ziel ist es natürlich, für Sie die maximale
             Rendite durch Ihre Sportwette zu erzuielen.`,
-        icon: <Icon color="black" as={CgPerformance} w={10} h={10} />,
+        icon: "/services/performance.png",
+        fallback: <Icon color="black" as={CgPerformance} w={10} h={10} />,
         link: "/dienstleistungen/#Leistungsüberprüfungen"
     },
     {
@@ -92,7 +101,8 @@ const SERVICES_DATA = [
         text: `Unsere offiziellen Zertifizierungen bescheinigen die herausragende Qualität und Leistungsfähigkeit Ihrer Pferde.
             Diese begehrten Zertifikate erhöhen den Wert und das Ansehen Ihrer Pferde, sei es für Zucht- oder Verkaufszwecke,
             und verleihen ihnen einen prestigeträchtigen Status.`,
-        icon: <Icon color="black" as={GrCertificate} w={10} h={10} />,
+        icon: "/services/certificate.png",
+        fallback: <Icon color="black" as={GrCertificate} w={10} h={10} />,
         link: "/dienstleistungen/#Zertifizierungen"
     }
 ]
