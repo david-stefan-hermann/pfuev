@@ -22,13 +22,13 @@ const PriceWrapper: React.FC<Props> = (item) => {
             alignSelf={{ base: 'center', lg: 'flex-start' }}
             borderColor={useColorModeValue('gray.200', 'gray.500')}
             borderRadius='xl'>
-            <Box py={4} px={12}>
+            <Box pt={4} pb={2} px={12}>
                 <Text fontWeight="500" fontSize="2xl">
                     {item.title}
                 </Text>
                 <HStack justifyContent="center">
                     <Text fontSize="3xl" fontWeight="600">
-                        €
+                        {item.duration ? "€" : "ab €"}
                     </Text>
                     <Text fontSize="5xl" fontWeight="900">
                         {item.price}
@@ -110,16 +110,16 @@ const PRICING_DATA = [
         button: false,
         popular: true,
         features: [
-            '2 Gesundheitschecks im Jahr',
-            '2 Leistungschecks im Jahr',
-            '1 Zertifikat - automatisch verlängert',
+            '3 Gesundheitschecks im Jahr',
+            '3 Leistungschecks im Jahr',
+            '3 Zertifikate - automatisch verlängert',
             'jedes weitere Pferd: 5€/Monat',
         ],
     },
     {
         title: 'Gewerbe',
         price: '0',
-        duration: 'auf Anfrage',
+        duration: '',
         button: true,
         popular: false,
         features: [
