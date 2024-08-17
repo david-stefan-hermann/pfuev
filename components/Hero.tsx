@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Button, Container, Flex, Heading, HStack, Image, Stack, Text, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, Image, Stack, Text, useBreakpointValue } from '@chakra-ui/react'
 import { PiHorseLight } from 'react-icons/pi'
 
 interface HeroData {
@@ -8,7 +8,7 @@ interface HeroData {
     subtitle: string
     description: string
     cta: HeroCta[]
-    image: string
+    image?: string
     showButtons?: boolean
 }
 
@@ -25,8 +25,8 @@ const Hero: React.FC<HeroProps> = (props) => {
     const HERO_DATA = props.data
 
     return (
-        <Box>
-            <Container maxW='7xl' p={8} py={10} as={HStack} spacing={12}>
+        <Stack minH='90vh' direction={{ base: 'column', md: 'row' }}>
+            <Flex p={8} flex={1} align='center' justify='center'>
                 <Stack spacing={6} w='full' maxW='lg'>
                     <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
                         <Text
@@ -53,7 +53,6 @@ const Hero: React.FC<HeroProps> = (props) => {
                         {HERO_DATA.description}
                     </Text>
                     <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-
                         {HERO_DATA.cta.map((cta, index) => (
                             <Button
                                 key={index}
@@ -67,18 +66,21 @@ const Hero: React.FC<HeroProps> = (props) => {
                         ))}
                     </Stack>
                 </Stack>
-
-                <Box display="flex" alignItems="center">
-                    <Image
-                        maxH="2xl"
-                        alt='Login Image'
-                        objectFit='contain'
-                        src={HERO_DATA.image}
-                        fallback={<PiHorseLight color='black' size="80%" />}
-                    />
-                </Box>
-            </Container>
-        </Box>
+            </Flex>
+            {HERO_DATA.image && (
+                <Flex flex={1}>
+                    <Box display="flex" alignItems="center">
+                        <Image
+                            maxH="2xl"
+                            alt='Login Image'
+                            objectFit='contain'
+                            src={HERO_DATA.image}
+                            fallback={<PiHorseLight color='black' size="80%" />}
+                        />
+                    </Box>
+                </Flex>
+            )}
+        </Stack>
     )
 }
 
