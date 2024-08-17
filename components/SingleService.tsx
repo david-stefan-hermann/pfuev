@@ -33,7 +33,7 @@ const SingleService: React.FC<SingleServiceProps> = (service) => {
     const conditionalBg = service.id % 2 ? bg : ""
     
     return (
-        <Container as={Stack} maxW="full" py={16} bg={conditionalBg}>
+        <Container as={Stack} maxW="full" pt={8} pb={16} bg={conditionalBg}>
             <Container as={Stack} maxW='5xl' spacing={12}>
                 <Box
                     display="flex"
