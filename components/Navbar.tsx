@@ -265,6 +265,10 @@ const NAV_ITEMS: Array<NavItem> = [
         href: '/#preise',
     },
     {
+        label: 'Religion',
+        href: '/religion',
+    },
+    {
         label: 'Kontakt',
         href: '/#kontakt',
     },
