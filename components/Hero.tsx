@@ -1,12 +1,32 @@
 'use client'
 
-import { Box, Button, Flex, Heading, Image, Stack, Text, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Button, Container, Flex, Heading, HStack, Image, Stack, Text, useBreakpointValue } from '@chakra-ui/react'
 import { PiHorseLight } from 'react-icons/pi'
 
-const Hero: React.FC = () => {
+interface HeroData {
+    title: string
+    subtitle: string
+    description: string
+    cta: HeroCta[]
+    image: string
+    showButtons?: boolean
+}
+
+interface HeroCta {
+    title: string
+    href: string
+}
+
+interface HeroProps {
+    data: HeroData
+}
+
+const Hero: React.FC<HeroProps> = (props) => {
+    const HERO_DATA = props.data
+
     return (
-        <Stack minH='90vh' direction={{ base: 'column', md: 'row' }}>
-            <Flex p={8} flex={1} align='center' justify='center'>
+        <Box>
+            <Container maxW='7xl' p={8} py={10} as={HStack} spacing={12}>
                 <Stack spacing={6} w='full' maxW='lg'>
                     <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
                         <Text
@@ -33,25 +53,21 @@ const Hero: React.FC = () => {
                         {HERO_DATA.description}
                     </Text>
                     <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
-                        <Button
-                            rounded='full'
-                            size='lg'
-                            colorScheme='blue'
-                            as="a"
-                            href="#kontakt">
-                            {HERO_DATA.cta}
-                        </Button>
-                        <Button
-                            rounded='full'
-                            size='lg'
-                            as="a"
-                            href="#partner">
-                            Partner
-                        </Button>
+
+                        {HERO_DATA.cta.map((cta, index) => (
+                            <Button
+                                key={index}
+                                rounded='full'
+                                size='lg'
+                                as="a"
+                                colorScheme={index == 0 ? 'blue' : 'gray'}
+                                href={cta.href}>
+                                {cta.title}
+                            </Button>
+                        ))}
                     </Stack>
                 </Stack>
-            </Flex>
-            <Flex flex={1}>
+
                 <Box display="flex" alignItems="center">
                     <Image
                         maxH="2xl"
@@ -61,17 +77,10 @@ const Hero: React.FC = () => {
                         fallback={<PiHorseLight color='black' size="80%" />}
                     />
                 </Box>
-            </Flex>
-        </Stack>
+            </Container>
+        </Box>
     )
 }
 
 export default Hero
 
-const HERO_DATA = {
-    title: 'PFÜV',
-    subtitle: 'Pferdischer Überwachungsverein',
-    description: 'Willkommen beim PFÜV, dem führenden Verein für die Überprüfung und Inspektion von Pferden. Wir sorgen dafür, dass Ihre Pferde stets in bester Verfassung sind.',
-    cta: 'Jetzt Kontaktieren',
-    image: '/hero/logo.png'
-}
