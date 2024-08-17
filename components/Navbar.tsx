@@ -242,17 +242,17 @@ const NAV_ITEMS: Array<NavItem> = [
             {
                 label: 'Gesundheitschecks',
                 subLabel: 'Umfassende Gesundheitsprüfungen, um sicherzustellen, dass Ihre Pferde gesund und fit sind.',
-                href: '/dienstleistungen/#Gesundheitschecks',
+                href: '/dienstleistungen/gesundheitschecks',
             },
             {
                 label: 'Leistungsüberprüfungen',
                 subLabel: 'Detaillierte Leistungsanalysen zur Optimierung der Trainingsprogramme',
-                href: '/dienstleistungen/#Leistungsüberprüfungen',
+                href: '/dienstleistungen/leistungsanalysen',
             },
             {
                 label: 'Zertifizierungen',
                 subLabel: 'Offizielle Zertifizierungen für Zucht- und Verkaufszwecke.',
-                href: '/dienstleistungen/#Zertifizierungen',
+                href: '/dienstleistungen/zertifizierungen',
             },
         ],
     },

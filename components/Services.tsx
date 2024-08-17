@@ -84,7 +84,7 @@ const SERVICES_DATA = [
             Vertrauen Sie auf unsere Expertise, um die Gesundheit und das Wohlbefinden Ihrer Pferde sicherzustellen.`,
         icon: "/services/health.png",
         fallback: <Icon color="black" as={MdOutlineHealthAndSafety} w={10} h={10} />,
-        link: "/dienstleistungen/#Gesundheitschecks"
+        link: "/dienstleistungen/gesundheitschecks"
     },
     {
         title: 'Leistungsüberprüfungen',
@@ -94,7 +94,7 @@ const SERVICES_DATA = [
             Rendite durch Ihre Sportwette zu erzuielen.`,
         icon: "/services/performance.png",
         fallback: <Icon color="black" as={CgPerformance} w={10} h={10} />,
-        link: "/dienstleistungen/#Leistungsüberprüfungen"
+        link: "/dienstleistungen/leistungsanalysen"
     },
     {
         title: 'Zertifizierungen',
@@ -103,6 +103,6 @@ const SERVICES_DATA = [
             und verleihen ihnen einen prestigeträchtigen Status.`,
         icon: "/services/certificate.png",
         fallback: <Icon color="black" as={GrCertificate} w={10} h={10} />,
-        link: "/dienstleistungen/#Zertifizierungen"
+        link: "/dienstleistungen/zertifizierungen"
     }
 ]
