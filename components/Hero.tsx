@@ -1,6 +1,7 @@
 'use client'
 
 import { Box, Button, Flex, Heading, Image, Stack, Text, useBreakpointValue } from '@chakra-ui/react'
+import { useEffect, useState } from 'react'
 import { PiHorseLight } from 'react-icons/pi'
 
 interface HeroData {
@@ -23,10 +24,24 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = (props) => {
     const HERO_DATA = props.data
+    const [windowHeight, setWindowHeight] = useState(0)
+    const [headerHeight, setHeaderHeight] = useState(100)
+
+    useEffect(() => {
+        setWindowHeight(window.innerHeight)
+    },[])
+
+    useEffect(() => {
+        const headerElement = document.getElementById('header')
+        if (headerElement) {
+            const newHeight = headerElement.offsetHeight
+            setHeaderHeight(newHeight)
+        }
+    })
 
     return (
-        <Stack minH='90vh' direction={{ base: 'column', md: 'row' }}>
-            <Flex p={8} flex={1} align='center' justify='center'>
+        <Stack px={8} py={{base: '8', md: '0'}} minH={{base: '', md: windowHeight - headerHeight}} pb={{base: '8', md: headerHeight}} direction={{ base: 'column', md: 'row' }}>
+            <Flex flex={1} align='center' justify={{base: 'left', md: 'center'}}>
                 <Stack spacing={6} w='full' maxW='lg'>
                     <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
                         <Text
@@ -69,7 +84,7 @@ const Hero: React.FC<HeroProps> = (props) => {
             </Flex>
             {HERO_DATA.image && (
                 <Flex flex={1}>
-                    <Box display="flex" alignItems="center">
+                    <Box display="flex"p={8} alignItems="center">
                         <Image
                             maxH="2xl"
                             alt='Login Image'
