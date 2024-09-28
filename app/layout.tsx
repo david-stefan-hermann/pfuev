@@ -6,7 +6,7 @@ import { fonts } from './fonts'
 import React from "react"
 
 export const metadata: Metadata = {
-  title: "PFÜF",
+  title: "PFÜV – Pferdischer Überwachungsverein",
   description: "Pferdischer Überprüfungsverband",
 }
 
